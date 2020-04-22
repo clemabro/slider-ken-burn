@@ -12,6 +12,9 @@ switch ($request) {
     case '/'.$dossierActuel:
         connexion();
         break;
+    case '/'.$dossierActuel.'/isExistUser':
+        isExistUser();
+        break;
     default:
         http_response_code(404);
         require __DIR__.'/vues/404.php';

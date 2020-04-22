@@ -44,7 +44,7 @@ class Image
     }
 
     public function getX_source(){
-        return $this->_x_source
+        return $this->_x_source;
     }
 
     public function getY_source() {

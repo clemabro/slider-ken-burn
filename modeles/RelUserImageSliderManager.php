@@ -1,5 +1,5 @@
 <?php
-require_once('entites/RelUserImageSlider.php')
+require_once('entites/RelUserImageSlider.php');
 
 class RelUserImageSliderManager
 {

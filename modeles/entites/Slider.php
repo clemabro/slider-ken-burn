@@ -4,7 +4,7 @@ class Slider
     private $_idSlider;
     private $_nom;
     private $_dateCreation;
-    private $_dateMaj
+    private $_dateMaj;
 
     public function __construct(array $donnees)
     {

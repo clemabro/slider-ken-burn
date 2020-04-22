@@ -1,7 +1,7 @@
 <?php
 require_once('entites/User.php');
 
-class UserManger
+class UserManager
 {
     private $_db;
 
@@ -53,7 +53,7 @@ class UserManger
                                             :password)");
 
         $statement->bindValue(":login", $user->getLogin(), PDO::PARAM_STR);
-        $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR));
+        $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }
@@ -64,7 +64,7 @@ class UserManger
                                             password = :password WHERE login = :login");
 
         $statement->bindValue(":login", $user->getLogin(), PDO::PARAM_STR);
-        $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR));
+        $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }

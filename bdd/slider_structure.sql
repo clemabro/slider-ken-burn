@@ -20,15 +20,15 @@ CREATE TABLE user(
 
 CREATE TABLE image(
         idImage             Int  Auto_increment  NOT NULL ,
-        tempsAffichage      Int NOT NULL ,
-        x_source            Float NOT NULL ,
-        y_source            Float NOT NULL ,
-        largeur_source      Float NOT NULL ,
-        hauteur_source      Float NOT NULL ,
-        x_destination       Float NOT NULL ,
-        y_destination       Float NOT NULL ,
-        largeur_destination Float NOT NULL ,
-        hauteur_destination Float NOT NULL ,
+        tempsAffichage      Int ,
+        x_source            Float  ,
+        y_source            Float  ,
+        largeur_source      Float  ,
+        hauteur_source      Float  ,
+        x_destination       Float  ,
+        y_destination       Float  ,
+        largeur_destination Float  ,
+        hauteur_destination Float  ,
         chemin              Varchar (255) NOT NULL
 	,CONSTRAINT image_PK PRIMARY KEY (idImage)
 )ENGINE=InnoDB;
