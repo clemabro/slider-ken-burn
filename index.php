@@ -6,8 +6,15 @@ require_once __DIR__.'/controleurs/AlbumsControlleur.php';
 $request = $_SERVER['REQUEST_URI'];
 $dossierActuel = basename(__DIR__);
 
+// Routage
 switch ($request) {
     case '/'.$dossierActuel.'/':
+        connexion();
+        break;
+    case '/'.$dossierActuel:
+        connexion();
+        break;
+    case '/'.$dossierActuel.'/connexion':
         connexion();
         break;
     case '/'.$dossierActuel.'/albums':
@@ -15,6 +22,9 @@ switch ($request) {
         break;
     case '/'.$dossierActuel.'/isExistUser':
         isExistUser();
+        break;
+    case '/'.$dossierActuel.'/inscription':
+        inscription();
         break;
     default:
         http_response_code(404);

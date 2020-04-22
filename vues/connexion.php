@@ -61,7 +61,7 @@
                                     </div>
                                     -->
                                 </form>
-                                <form id="register-form" action="" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="inscription" method="post" role="form" style="display: none;">
                                     <div class="form-group">
                                         <input type="text" name="username" id="username" tabindex="1" required class="form-control" placeholder="Nom d'utilisateur" value="">
                                     </div>
@@ -69,7 +69,7 @@
                                         <input type="password" name="password" id="password" tabindex="2" required class="form-control" placeholder="Mot de passe">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" required tabindex="2" class="form-control" placeholder="Confirmez le mot de passe">
+                                        <input type="password" id="confirm-password" required tabindex="2" class="form-control" placeholder="Confirmez le mot de passe">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

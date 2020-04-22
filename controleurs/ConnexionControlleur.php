@@ -26,4 +26,19 @@ function isExistUser()
         'isExistUser' => $toReturn
     ));
 }
+
+function inscription()
+{
+    $mdp=password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $login = $_POST['username'];
+
+    $user = new User(array(
+        'login' => $login,
+        'password' => $mdp
+    ));
+
+    getUserManager()->createUser($user);
+
+    header('Location: connexion');
+}
 ?>
