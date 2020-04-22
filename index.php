@@ -1,14 +1,16 @@
 <?php
 
+require_once __DIR__.'/controleurs/ConnexionControlleur.php';
+
 $request = $_SERVER['REQUEST_URI'];
 $dossierActuel = basename(__DIR__);
 
 switch ($request) {
     case '/'.$dossierActuel.'/':
-        require __DIR__.'/vues/connexion.php';
+        connexion();
         break;
     case '/'.$dossierActuel:
-        require __DIR__.'/vues/connexion.php';
+        connexion();
         break;
     default:
         http_response_code(404);
