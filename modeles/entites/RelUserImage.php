@@ -1,5 +1,5 @@
 <?php
-class RelUserImage
+class RelUserImageSlider
 {
     private $_idImage;
     private $_idUser;

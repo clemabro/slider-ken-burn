@@ -1,5 +1,5 @@
 <?php
-require_once('entites/Image.php');
+require_once 'entites/Image.php';
 
 class ImageManager
 {
