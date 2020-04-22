@@ -1,0 +1,6 @@
+{
+    "HOSTBDD" : "localhost:3306",
+    "LOGIN" : "root",
+    "PASSWORD" : "",
+    "NOMDELABASE" : "slider"
+}
