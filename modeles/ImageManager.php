@@ -52,8 +52,12 @@ class ImageManager
                                             :tempsAffichage,
                                             :x_source,
                                             :y_source,
+                                            :largeur_source,
+                                            :hauteur_source,
                                             :x_destination,
                                             :y_destination,
+                                            :largeur_destination,
+                                            :hauteur_destination,
                                             :chemin,
                                             :idTypeZoom)");
 
@@ -61,8 +65,12 @@ class ImageManager
         $statement->bindValue(":tempsAffichage", $image->getTempsAffichage(), PDO::PARAM_INT);
         $statement->bindValue(":x_source", $image->getX_source());
         $statement->bindValue(":y_source", $image->getY_source());
+        $statement->bindValue(":largeur_source", $image->getLargeur_source());
+        $statement->bindValue(":hauteur_source", $image->getHauteur_source());
         $statement->bindValue(":x_destination", $image->getX_destination());
         $statement->bindValue(":y_destination", $image->getY_destination());
+        $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
+        $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
         $statement->bindValue(":idTypeZoom", $image->getIdTypeZoom(), PDO::PARAM_INT);
 
@@ -75,8 +83,12 @@ class ImageManager
                                             tempsAffichage = :tempsAffichage,
                                             x_source = :x_source,
                                             y_source = :y_source,
+                                            largeur_source = :largeur_source,
+                                            hauteur_source = :hauteur_source,
                                             x_destination = :x_destination,
                                             y_destination = :y_destination,
+                                            largeur_destination = :largeur_destination,
+                                            hauteur_destination = :hauteur_destination,
                                             chemin = :chemin
                                             idTypeZoom = :idTypeZoom WHERE idImage = :idImage");
 
@@ -84,8 +96,12 @@ class ImageManager
         $statement->bindValue(":tempsAffichage", $image->getTempsAffichage(), PDO::PARAM_INT);
         $statement->bindValue(":x_source", $image->getX_source());
         $statement->bindValue(":y_source", $image->getY_source());
+        $statement->bindValue(":largeur_source", $image->getLargeur_source());
+        $statement->bindValue(":hauteur_source", $image->getHauteur_source());
         $statement->bindValue(":x_destination", $image->getX_destination());
         $statement->bindValue(":y_destination", $image->getY_destination());
+        $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
+        $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
         $statement->bindValue(":idTypeZoom", $image->getIdTypeZoom(), PDO::PARAM_INT);
 
