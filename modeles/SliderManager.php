@@ -1,5 +1,5 @@
 <?php
-require_once('entites/Slider.php');
+require_once 'entites/Slider.php';
 
 class SliderManager
 {

@@ -2,7 +2,6 @@
 /*
     Import fichier
 */
-require_once 'modeles/Managers.php';
 
 /*
     Fonction

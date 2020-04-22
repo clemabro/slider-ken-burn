@@ -1,5 +1,5 @@
 <?php
-
+require  __DIR__.'/modeles/Managers.php';
 require_once __DIR__.'/controleurs/ConnexionControlleur.php';
 require_once __DIR__.'/controleurs/AlbumsControlleur.php';
 
@@ -10,7 +10,7 @@ switch ($request) {
     case '/'.$dossierActuel.'/':
         connexion();
         break;
-    case '/'.$dossierActuel.'/Albums':
+    case '/'.$dossierActuel.'/albums':
         albums();
         break;
     case '/'.$dossierActuel.'/isExistUser':
