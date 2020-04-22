@@ -17,10 +17,18 @@ $(function() {
 
 });
 
+// Vérifie l'inscription
 function verifyRegister(e)
 {
 	e.preventDefault();
 
+	// Si le username est vide on affiche l'erreur
+	if($('#register-form').find('#username').val() == "") {
+		$('#register-form').get(0).reportValidity();
+		return;
+	}
+
+	// Init notiflix
 	Notiflix.Notify.Init({
 		position:"left-bottom",
 		distance:"36%",
@@ -28,6 +36,7 @@ function verifyRegister(e)
 		timeout:3000
 	});
 
+	// Appel ajax pour savoir si le username est deja utilise
 	$.ajax({
         url: "isExistUser",
         data: {
@@ -39,10 +48,11 @@ function verifyRegister(e)
         success: function (data) {
 			console.log(data);
 			
+			// Affiche une erreur si deja utilise sinon verifie le mdp
 			if(data.isExistUser) {
 				Notiflix.Notify.Failure('Ce nom d\'utilisateur est déjà utilisé');
 			} else {
-
+				verifyPassword();
 			}
 
         },
@@ -51,7 +61,25 @@ function verifyRegister(e)
 			Notiflix.Notify.Failure('Une erreur est survenue');
         }
     });
-	//$('#register-form').submit();
 }
 
+// Verifie le mdp
 function verifyPassword()
+{
+	// Recuperation des valeurs
+	password = $('#register-form').find('#password').val();
+	password_confirm = $('#register-form').find('#confirm-password').val();
+
+	// test si les mdp ne sont pas vides
+	if(password == "" || password_confirm == "") {
+		$('#register-form').get(0).reportValidity();
+		return;
+	}
+
+	// verifie si ils sont pareil, si oui on envoie le form
+	if(password != password_confirm) {
+		Notiflix.Notify.Failure('Les mots de passe sont différents');
+	} else {
+		$('#register-form').submit();
+	}
+}
