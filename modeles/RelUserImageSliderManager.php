@@ -48,6 +48,26 @@ class RelUserImageSliderManager
         }
     }
 
+    public function getRelUserImageSliderByLogin($login)
+    {
+        $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE login = :login');
+        $statement->bindValue(':login',$login, PDO::PARAM_STR);
+
+        try {
+            $statement->execute();
+        } catch (Exception $ex) {
+            throw new Exception("Imposible d'éxecuter la requete", 500);
+        }
+
+        $donnees = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if($donnees) {
+            return new RelUserImageSlider($donnees);
+        } else {
+            return false;
+        }
+    }
+
     public function createRelUserImageSlider(RelUserImageSlider $relUserImageSlider)
     {
         $statement = $this->_db->prepare("INSERT INTO reluserimageslider VALUES (:login,
