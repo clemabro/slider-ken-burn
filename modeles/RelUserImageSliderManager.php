@@ -26,10 +26,10 @@ class RelUserImageSliderManager
         return $result;
     }
 
-    public function getRelUserImageSliderById($idUser, $idImage, $idSlider)
+    public function getRelUserImageSliderById($login, $idImage, $idSlider)
     {
-        $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE idUser = :idUser AND idImage = :idImage AND idSlider = :idSlider');
-        $statement->bindValue(':idUser',$idUser, PDO::PARAM_INT);
+        $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE login = :login AND idImage = :idImage AND idSlider = :idSlider');
+        $statement->bindValue(':login',$login, PDO::PARAM_STR);
         $statement->bindValue(':idImage',$idImage, PDO::PARAM_INT);
         $statement->bindValue(':idSlider',$idSlider, PDO::PARAM_INT);
 
@@ -50,23 +50,23 @@ class RelUserImageSliderManager
 
     public function createRelUserImageSlider(RelUserImageSlider $relUserImageSlider)
     {
-        $statement = $this->_db->prepare("INSERT INTO reluserimageslider VALUES (:idUser,
+        $statement = $this->_db->prepare("INSERT INTO reluserimageslider VALUES (:login,
                                             :idImage,
                                             :idSlider)");
 
-        $statement->bindValue(':idUser',$relUserImageSlider->getIdUser(), PDO::PARAM_INT);
+        $statement->bindValue(':login',$relUserImageSlider->getLogin(), PDO::PARAM_INT);
         $statement->bindValue(':idImage',$relUserImageSlider->getIdImage(), PDO::PARAM_INT);
         $statement->bindValue(':idSlider',$relUserImageSlider->getIdSlider(), PDO::PARAM_INT);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }
 
-    public function deleteRelUserImageSlider($idUser, $idImage, $idSlider)
+    public function deleteRelUserImageSlider($login, $idImage, $idSlider)
     {
-        $statement = $this->_db->prepare("DELETE FROM reluserimageslider WHERE idUser = :idUser AND idImage = :idImage AND idSlider = :idSlider");
-        $statement->bindValue(':idUser',$idUser, PDO::PARAM_INT);
-        $statement->bindValue(':idImage',$idImage, PDO::PARAM_INT);
-        $statement->bindValue(':idSlider',$idSlider, PDO::PARAM_INT);
+        $statement = $this->_db->prepare("DELETE FROM reluserimageslider WHERE login = :login AND idImage = :idImage AND idSlider = :idSlider");
+        $statement->bindValue(':login', $login, PDO::PARAM_STR);
+        $statement->bindValue(':idImage', $idImage, PDO::PARAM_INT);
+        $statement->bindValue(':idSlider', $idSlider, PDO::PARAM_INT);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }

@@ -1,7 +1,6 @@
 <?php
 class User
 {
-    private $_idUser;
     private $_login;
     private $_password;
 
@@ -26,10 +25,6 @@ class User
     }
 
     /* GETTERS */
-    public function getIdUser() {
-        return $this->_idUser;
-    }
-
     public function getLogin() {
         return $this->_login;
     }
@@ -39,15 +34,6 @@ class User
     }
 
     /* SETTERS */
-    public function setIdUser($idUser) {
-        // Convertit en int, si ce n'est pas un entier il le met à 0
-        $idUser = (int) $idUser;
-
-        if($idUser > 0) {
-            $this->_idUser = $idUser;
-        }
-    }
-
     public function setLogin($login) {
         if(is_string($login)) {
             $this->_login = $login;

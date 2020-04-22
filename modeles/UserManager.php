@@ -26,10 +26,10 @@ class UserManger
         return $result;
     }
 
-    public function getUserById($idUser)
+    public function getUserByLogin($login)
     {
-        $statement = $this->_db->prepare('SELECT * FROM user WHERE idUser = :idUser');
-        $statement->bindValue(':idUser',$idUser, PDO::PARAM_INT);
+        $statement = $this->_db->prepare('SELECT * FROM user WHERE login = :login');
+        $statement->bindValue(':login',$login, PDO::PARAM_STR);
 
         try {
             $statement->execute();
@@ -48,11 +48,10 @@ class UserManger
 
     public function createUser(User $user)
     {
-        $statement = $this->_db->prepare("INSERT INTO user VALUES (:idUser,
+        $statement = $this->_db->prepare("INSERT INTO user VALUES (
                                             :login,
                                             :password)");
 
-        $statement->bindValue(":idUser", $user->getIdUser(), PDO::PARAM_INT);
         $statement->bindValue(":login", $user->getLogin(), PDO::PARAM_STR);
         $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR));
 
@@ -61,21 +60,19 @@ class UserManger
 
     public function updateUser(User $user)
     {
-        $statement = $this->_db->prepare("UPDATE user SET 
-                                            login = :login,
-                                            password = :password WHERE idUser = :idUser");
+        $statement = $this->_db->prepare("UPDATE user SET
+                                            password = :password WHERE login = :login");
 
-        $statement->bindValue(":idUser", $user->getIdUser(), PDO::PARAM_INT);
         $statement->bindValue(":login", $user->getLogin(), PDO::PARAM_STR);
         $statement->bindValue(":password", $user->getPassword(), PDO::PARAM_STR));
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }
 
-    public function deleteUser($idUser)
+    public function deleteUser($login)
     {
-        $statement = $this->_db->prepare("DELETE FROM user where idUser = :idUser");
-        $statement->bindParam(':idUser', $idUser);
+        $statement = $this->_db->prepare("DELETE FROM user where login = :login");
+        $statement->bindValue(':login', $login);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }
