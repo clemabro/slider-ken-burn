@@ -44,7 +44,7 @@ class Image
     }
 
     public function getX_source(){
-        return $this->_x_source
+        return $this->_x_source;
     }
 
     public function getY_source() {
@@ -95,7 +95,7 @@ class Image
 
     public function setTempsAffichage($tempsAffichage) {
         // Convertit en int, si ce n'est pas un entier il le met à 0
-        $idImage = (int) $idImage;
+        $idImage = (int) $tempsAffichage;
 
         if($idImage >= 0) {
             $this->_idImage = $idImage;
