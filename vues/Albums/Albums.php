@@ -1,73 +1,23 @@
 <?php
+ //On demarre la session
+ session_start();
+
+ // On teste si la variable de session existe et contient une valeur
+ if(empty($_SESSION['login'])) 
+ {
+   // Si inexistante ou nulle, on redirige vers le formulaire de login
+   header('Location: connexion');
+   exit();
+ }
+include_once 'vues/ressources/header.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <title>Vos Albums</title>
-    <!-- Required meta tags always come first -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="vues/dist/font-awesome/css/font-awesome.min.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="vues/css/main.min.css">
-    <!--[if IE]>
-    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3"></script>
-    <![endif]-->
-    <!--[if lt IE 9]>
-    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie8.min.css" rel="stylesheet">
-    <![endif]-->
-</head>
-
 <body>
+<script src="vues/lib/main.min.js"></script>
+<link rel="stylesheet" href="vues/lib/main.min.css">
 <div class="loader"></div>
-<header id="header">
-    <div class="collapse" id="navbarHeader">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                    <h4>About</h4>
-                    <p class="text-muted">Album is a contemporary template that's perfect for anyone looking to make a big first impression.
-                        With beautiful headline and navigation elements, Album ensures that your content always looks
-                        stunning.
-                    </p>
-                </div>
-                <div class="col-sm-4 offset-md-1 py-4" id="contact-info">
-                    <h4>Contact</h4>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="https://twitter.com/orbitThemes">
-                                <i class="fa fa-twitter"></i> Follow on Twitter</a>
-                        </li>
-                        <li>
-                            <a href="https://facebook.com/orbitThemes">
-                                <i class="fa fa-facebook"></i> Like on Facebook</a>
-                        </li>
-                        <li>
-                            <a href="mailto:themesorbit@gmail.com?Subject=Hello" target="_top">
-                                <i class="fa fa-envelope"></i> Email me</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="navbar navbar-light box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="#" id="header-logo">
-                <img src="https://raw.githubusercontent.com/orbitthemes/Orbit-Themes/master/assets/logo.png" class="img-fluid" alt="Orbit Themes">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </div>
-</header>
+<?php
+    include_once 'vues/ressources/navBar.php';
+?>
 <main id="main" role="main">
     <section class="jumbotron text-center" id="mainBanner">
         <div class="container">
@@ -75,7 +25,7 @@
             <p class="lead text-muted">Vous trouverez ci-dessous l'ensemble des diaporamas que vous avez créé</p>
             <p>
                 <a href="#" class="btn btn-primary my-2">Créer un nouveau diaporama</a>
-                <a href="#" class="btn btn-secondary my-2">Déconnexion</a>
+                
             </p>
         </div>
     </section>
@@ -148,11 +98,5 @@
         </a>
     </div>
 </footer>
-<!-- jQuery first, then Bootstrap JS. -->
-<script src="vues/dist/jquery/jquery.min.js"></script>
-<script src="vues/dist/popper/popper.min.js" integrity=""></script>
-<script src="vues/dist/bootstrap/js/bootstrap.min.js"></script>
-<script src="vues/js/main.min.js"></script>
 </body>
-
 </html>
