@@ -1,7 +1,4 @@
 <?php
- //On demarre la session
- session_start();
-
  // On teste si la variable de session existe et contient une valeur
  if(empty($_SESSION['login'])) 
  {

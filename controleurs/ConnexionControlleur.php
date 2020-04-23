@@ -59,7 +59,6 @@ function connexionUser()
     }
 
     if($isCompteExiste) {
-        session_start();
         $_SESSION['login'] = $login;
     }
 
