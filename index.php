@@ -9,10 +9,10 @@ $dossierActuel = basename(__DIR__);
 // Routage
 switch ($request) {
     case '/'.$dossierActuel.'/':
-        connexion();
+        header('Location: connexion');
         break;
     case '/'.$dossierActuel:
-        connexion();
+        header('Location: connexion');
         break;
     case '/'.$dossierActuel.'/connexion':
         connexion();

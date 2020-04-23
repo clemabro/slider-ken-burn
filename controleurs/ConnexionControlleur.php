@@ -1,29 +1,25 @@
 <?php
 /*
-    Import fichier
-*/
-
-/*
     Fonction
 */
 function connexion()
 {
-    require __DIR__.'/../vues/connexion.php';
+    require_once 'vues/connexion.php';
 }
 
 function isExistUser()
 {
     $user = getUserManager()->getUserByLogin($_POST['login']);
-    $toReturn = false;
+    $isExistUser = false;
 
     if($user)
     {
-        $toReturn = true;
+        $isExistUser = true;
     }
 
     header('Content-Type: application/json;charset=utf-8');
     echo json_encode(array(
-        'isExistUser' => $toReturn
+        'isExistUser' => $isExistUser
     ));
 }
 
