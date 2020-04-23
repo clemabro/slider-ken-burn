@@ -5,7 +5,7 @@ require_once 'modeles/entites/Image.php';
 
 function creationDiapo()
 {
-    require_once 'vues/slider/create.php';
+    require 'vues/Slider/create.php';
 }
 
 function uploadImage($idSlider) {

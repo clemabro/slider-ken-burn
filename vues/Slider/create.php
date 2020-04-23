@@ -1,7 +1,13 @@
 <?php
-
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['login']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: connexion');
+    exit();
+}
+include_once 'vues/ressources/header.php';
 ?>
-
 
 <body>
     <div class="container">
@@ -32,4 +38,6 @@
 
 </body>
 
-
+<?php
+require_once 'vues/ressources/footer.php';
+?>
