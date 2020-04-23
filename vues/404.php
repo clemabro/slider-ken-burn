@@ -12,11 +12,11 @@ body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAA
         <div class="col-md-12">
             <div class="error-template">
                 <h1>
-                    Oops!</h1>
+                    Oups !</h1>
                 <h2>
                     404 Pas trouvé</h2>
                 <div class="error-details">
-                    Désolé, une erreur s'est produite, page demandée introuvable!
+                    Désolé, une erreur s'est produite, page demandée introuvable !
                 </div>
                 <div class="error-actions">
                     <a href="albums" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
