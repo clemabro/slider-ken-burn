@@ -1,4 +1,4 @@
-$("#inputChangePicture").on('change', function(){
+$("#inputPicture").on('change', function(){
     var formdataToSend = new FormData($('#formImgProfil')[0]);
         formdataToSend.append("mailCesi", $('#mail').val());
         formdataToSend.append("fonctionValeur", "uploadImgProfil");
