@@ -1,22 +1,23 @@
 $("#inputPicture").on('change', function(){
-    var formdataToSend = new FormData($('#formImgProfil')[0]);
-        formdataToSend.append("mailCesi", $('#mail').val());
-        formdataToSend.append("fonctionValeur", "uploadImgProfil");
+    var formdataToSend = new FormData($('#image')[0]);
+        formdataToSend.append("idSlider", $('#identifiantSlider').val());
 
-        console.log($('#formImgProfil'))
+        console.log($('#identifiantSlider'))
+
+
 
         $.ajax({
-            url: 'creationDiapo',
+            url: 'ajoutImage',
             data: formdataToSend,
             type: 'POST',
             dataType: 'json',
             contentType : false,
             processData : false,
             cache : false,
-            timeout: 3000,
+            timeout: 4000,
             success: function (data) {
             console.log(data);
-            $('#avatarEleve').attr("src", "data:image/" + data.imgType +";base64, " + data.imgProfil);
+
             },
             error: function (e) {
             console.log(e);
@@ -26,5 +27,6 @@ $("#inputPicture").on('change', function(){
 
 $("#changePicture").on("click", function(event) {
     event.preventDefault();
-    $("#inputChangePicture").trigger("click");
+    $("#inputPicture").trigger("click");
 });
+

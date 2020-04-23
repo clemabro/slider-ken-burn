@@ -38,6 +38,9 @@ switch ($request) {
     case '/'.$dossierActuel.'/deconnexion':
         deconnexion();
         break;
+    case '/'.$dossierActuel.'/ajoutImage':
+        uploadImage();
+        break;
     default:
         http_response_code(404);
         $title = "404";
