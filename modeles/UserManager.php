@@ -1,7 +1,7 @@
 <?php
-require_once('entites/User.php');
+require_once 'entites/User.php';
 
-class UserManger
+class UserManager
 {
     private $_db;
 

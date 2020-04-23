@@ -7,25 +7,20 @@ function albums()
     $identifiantsEnvoyes = array();
     $cheminsImage = array();
     $donneesREL = getRelUserImageSliderManager()->getRelUserImageSliderByLogin('EtoileNocturne');
-    var_dump($donneesREL);
 
-    if (!empty($donneesREL)){
-        echo 'HELLOOOO';
+    if(!empty($donneesREL)) {
         foreach ($donneesREL as $relationI)
         {
-            echo 'HELLOOOO';
-            var_dump($relationI);
             if (!array_key_exists($relationI->getIdSlider(),$identifiantsEnvoyes))
             {
                 array_push($donneesSlider,getSliderManager()->getSliderById($relationI->getIdSlider()));
-                //$cheminsImage[strval($relationI->getIdSlider())] = getImageManager()->getImageById($relationI->getIdImage());
+                $cheminsImage[strval($relationI->getIdSlider())] = getImageManager()->getImageById($relationI->getIdImage())->getChemin();
                 array_push($identifiantsEnvoyes,$relationI->getIdSlider());
 
             }
 
         }
     }
-
     require __DIR__.'/../vues/Albums/albums.php';
 }
 

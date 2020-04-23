@@ -11,8 +11,11 @@ switch ($request) {
     case '/'.$dossierActuel.'/':
         connexion();
         break;
-    case '/'.$dossierActuel.'/Albums':
+    case '/'.$dossierActuel.'/albums':
         albums();
+        break;
+    case '/'.$dossierActuel.'/isExistUser':
+        isExistUser();
         break;
     default:
         http_response_code(404);

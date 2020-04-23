@@ -1,5 +1,5 @@
 <?php
-require_once('entites/RelUserImageSlider.php');
+require_once 'entites/RelUserImageSlider.php';
 
 class RelUserImageSliderManager
 {
@@ -33,39 +33,30 @@ class RelUserImageSliderManager
         $statement->bindValue(':idImage',$idImage, PDO::PARAM_INT);
         $statement->bindValue(':idSlider',$idSlider, PDO::PARAM_INT);
 
-        try {
-            $statement->execute();
-        } catch (Exception $ex) {
-            throw new Exception("Imposible d'éxecuter la requete", 500);
+        $statement->execute() or die(print_r($statement->errorInfo()));
+
+        while ($donnees = $statement->fetch(PDO::FETCH_ASSOC))
+        {
+            $result[] = new RelUserImageSlider($donnees);
         }
 
-        $donnees = $statement->fetch(PDO::FETCH_ASSOC);
-        
-        if($donnees) {
-            return new RelUserImageSlider($donnees);
-        } else {
-            return false;
-        }
+        return $result;
     }
 
     public function getRelUserImageSliderByLogin($login)
     {
+        $result = [];
         $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE login = :login');
         $statement->bindValue(':login',$login, PDO::PARAM_STR);
 
-        try {
-            $statement->execute();
-        } catch (Exception $ex) {
-            throw new Exception("Imposible d'éxecuter la requete", 500);
+        $statement->execute() or die(print_r($statement->errorInfo()));
+
+        while ($donnees = $statement->fetch(PDO::FETCH_ASSOC))
+        {
+            $result[] = new RelUserImageSlider($donnees);
         }
 
-        $donnees = $statement->fetch(PDO::FETCH_ASSOC);
-        
-        if($donnees) {
-            return new RelUserImageSlider($donnees);
-        } else {
-            return false;
-        }
+        return $result;
     }
 
     public function createRelUserImageSlider(RelUserImageSlider $relUserImageSlider)
