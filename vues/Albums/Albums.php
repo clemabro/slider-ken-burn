@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -86,24 +89,21 @@
             </div>
 
             <div class="row">
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="vues/img/thumbnail.png" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-                                    This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">12 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <?php
+                    foreach($donneesSlider as $donnee)
+                    {
+                        echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
+                        echo '<img class="card-img-top" src="'.$cheminsImage[$donnee->getIdSlider()].'" alt="">';
+                        echo '<div class="card-body">';
+                        echo '<p class="card-text">'.$donnee->getNom().'</p>';
+                        echo '<div class="d-flex justify-content-between align-items-center">';
+                        echo '<div class="btn-group"><button type="button" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">View</button>';
+                        echo ' <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div>';
+                        $result = $donnee->getDateCreation()->format('d/m/Y');
+                        echo '<small class="text-muted">'.$result.'</small>';
+                        echo '</div></div></div></div>';
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -149,7 +149,7 @@
     </div>
 </footer>
 <!-- jQuery first, then Bootstrap JS. -->
-<script src="vues//dist/jquery/jquery.min.js"></script>
+<script src="vues/dist/jquery/jquery.min.js"></script>
 <script src="vues/dist/popper/popper.min.js" integrity=""></script>
 <script src="vues/dist/bootstrap/js/bootstrap.min.js"></script>
 <script src="vues/js/main.min.js"></script>

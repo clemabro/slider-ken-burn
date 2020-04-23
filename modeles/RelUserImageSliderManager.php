@@ -45,6 +45,7 @@ class RelUserImageSliderManager
 
     public function getRelUserImageSliderByLogin($login)
     {
+        $result = [];
         $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE login = :login');
         $statement->bindValue(':login',$login, PDO::PARAM_STR);
 
