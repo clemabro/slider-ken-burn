@@ -17,6 +17,16 @@ $(function() {
 
 });
 
+function initNotiflix()
+{
+	Notiflix.Notify.Init({
+		position:"left-bottom",
+		distance:"36%",
+		width: '553px',
+		timeout:3000
+	});
+}
+
 // Vérifie l'inscription
 function verifyRegister(e)
 {
@@ -29,12 +39,7 @@ function verifyRegister(e)
 	}
 
 	// Init notiflix
-	Notiflix.Notify.Init({
-		position:"left-bottom",
-		distance:"36%",
-		width: '553px',
-		timeout:3000
-	});
+	initNotiflix();
 
 	// Appel ajax pour savoir si le username est deja utilise
 	$.ajax({
@@ -82,4 +87,42 @@ function verifyPassword()
 	} else {
 		$('#register-form').submit();
 	}
+}
+
+function connexion(e)
+{
+	e.preventDefault();
+
+	// Si le username est vide on affiche l'erreur
+	if($('#login-form').find('#username').val() == "" || $('#login-form').find('#password').val() == "") {
+		$('#login-form').get(0).reportValidity();
+		return;
+	}
+
+	// Init notiflix
+	initNotiflix();
+
+	// Appel ajax pour savoir si le username est deja utilise
+	$.ajax({
+        url: "connexionUser",
+        data: $('#login-form').serialize(),
+        type: 'POST',
+        dataType: 'json',
+        timeout: 3000,
+        success: function (data) {
+			console.log(data);
+			
+			// Affiche une erreur si deja utilise sinon verifie le mdp
+			if (data) {
+                document.location.href = "albums";
+            } else {
+				Notiflix.Notify.Failure('Nom d\'utilisateur ou Mot de passe invalide');
+			}
+
+        },
+        error: function (e) {
+			console.log(e);
+			Notiflix.Notify.Failure('Une erreur est survenue');
+		}
+	})
 }

@@ -26,6 +26,9 @@ switch ($request) {
     case '/'.$dossierActuel.'/inscription':
         inscription();
         break;
+    case '/'.$dossierActuel.'/connexionUser':
+        connexionUser();
+        break;
     default:
         http_response_code(404);
         require __DIR__.'/vues/404.php';
