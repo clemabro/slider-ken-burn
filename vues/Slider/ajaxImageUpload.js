@@ -3,9 +3,7 @@ $("#inputPicture").on('change', function(){
         formdataToSend.append("idSlider", $('#identifiantSlider').val());
 
         console.log($('#identifiantSlider'))
-
-
-
+    
         $.ajax({
             url: 'ajoutImage',
             data: formdataToSend,

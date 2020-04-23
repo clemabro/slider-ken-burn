@@ -48,7 +48,7 @@ class SliderManager
 
     public function createSlider(Slider $slider)
     {
-        $statement = $this->_db->prepare("INSERT INTO slider VALUES (
+        $statement = $this->_db->prepare("INSERT INTO slider (nom,dateCreation,dateMaj) VALUES (
                                             :nom,
                                             :dateCreation,
                                             :dateMaj)");
