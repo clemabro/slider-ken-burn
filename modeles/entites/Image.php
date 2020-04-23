@@ -95,10 +95,10 @@ class Image
 
     public function setTempsAffichage($tempsAffichage) {
         // Convertit en int, si ce n'est pas un entier il le met à 0
-        $idImage = (int) $tempsAffichage;
+        $tempsAffichage = (int) $tempsAffichage;
 
-        if($idImage >= 0) {
-            $this->_idImage = $idImage;
+        if($tempsAffichage >= 0) {
+            $this->_tempsAffichage = $tempsAffichage;
         }
     }
 
@@ -171,15 +171,5 @@ class Image
             $this->_chemin = $chemin;
         }
     }
-
-    public function setIdTypeZoom($idTypeZoom) {
-        // Convertit en int, si ce n'est pas un entier il le met à 0
-        $idTypeZoom = (int) $idTypeZoom;
-
-        if($idTypeZoom >= 0) {
-            $this->_idTypeZoom = $idTypeZoom;
-        }
-    }
-
 }
 ?>
