@@ -4,7 +4,7 @@
 require  __DIR__.'./modeles/Managers.php';
 require_once __DIR__.'/controleurs/ConnexionControlleur.php';
 require_once __DIR__.'/controleurs/AlbumsControlleur.php';
-require_once __DIR__ . '/controleurs/SlideControlleur.php';
+require_once __DIR__ . '/controleurs/SliderControlleur.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $dossierActuel = basename(__DIR__);
@@ -40,6 +40,8 @@ switch ($request) {
         break;
     case '/'.$dossierActuel.'/ajoutImage':
         uploadImage();
+    case '/'.$dossierActuel.'/viewSlider':
+        viewSlider();
         break;
     default:
         http_response_code(404);
