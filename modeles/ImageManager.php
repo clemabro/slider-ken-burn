@@ -48,7 +48,7 @@ class ImageManager
 
     public function createImage(Image $image)
     {
-        $statement = $this->_db->prepare("INSERT INTO image VALUES (:idImage,
+        $statement = $this->_db->prepare("INSERT INTO image VALUES (
                                             :tempsAffichage,
                                             :x_source,
                                             :y_source,
@@ -75,6 +75,19 @@ class ImageManager
         $statement->bindValue(":idTypeZoom", $image->getIdTypeZoom(), PDO::PARAM_INT);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
+
+        $statement = $this->_db->prepare("SELECT * FROM image where idImage = :idImage");
+        $statement->bindValue(':idImage', $this->_db->lastInsertId());
+
+        $statement->execute() or die(print_r($statement->errorInfo()));
+
+        $donnees = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($donnees) {
+            return new Image($donnees);
+        } else {
+            return false;
+        }
     }
 
     public function updateImage(Image $image)
