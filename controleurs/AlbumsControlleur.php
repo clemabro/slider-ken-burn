@@ -22,7 +22,7 @@ function albums()
         }
     }
 
-    $title = "Vos Albums";
+    $title = "Ma Collection";
     require __DIR__.'/../vues/Albums/albums.php';
 }
 

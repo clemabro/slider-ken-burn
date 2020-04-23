@@ -48,17 +48,29 @@ class SliderManager
 
     public function createSlider(Slider $slider)
     {
-        $statement = $this->_db->prepare("INSERT INTO slider VALUES (:idSlider,
+        $statement = $this->_db->prepare("INSERT INTO slider VALUES (
                                             :nom,
                                             :dateCreation,
                                             :dateMaj)");
 
-        $statement->bindValue(":idSlider", $slider->getIdSlider(), PDO::PARAM_INT);
         $statement->bindValue(":nom", $slider->getNom(), PDO::PARAM_STR);
         $statement->bindValue(":dateCreation", date_format($slider->getDateCreation(), 'Y-m-d'));
         $statement->bindValue(":dateMaj", date_format($slider->getDateMaj(), 'Y-m-d'));
 
         $statement->execute() or die(print_r($statement->errorInfo()));
+
+        $statement = $this->_db->prepare("SELECT * FROM slider where idSlider = :idSlider");
+        $statement->bindValue(':idSlider', $this->_db->lastInsertId());
+
+        $statement->execute() or die(print_r($statement->errorInfo()));
+
+        $donnees = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($donnees) {
+            return new Slider($donnees);
+        } else {
+            return false;
+        }
     }
 
     public function updateSider(Slider $slider)
