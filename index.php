@@ -3,6 +3,7 @@
 require  __DIR__.'./modeles/Managers.php';
 require_once __DIR__.'/controleurs/ConnexionControlleur.php';
 require_once __DIR__.'/controleurs/AlbumsControlleur.php';
+require_once __DIR__.'/controleurs/creationDiapoControlleur.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $dossierActuel = basename(__DIR__);
@@ -20,6 +21,9 @@ switch ($request) {
         break;
     case '/'.$dossierActuel.'/albums':
         albums();
+        break;
+    case '/'.$dossierActuel.'/creationDiapo':
+        creationDiapo();
         break;
     case '/'.$dossierActuel.'/isExistUser':
         isExistUser();

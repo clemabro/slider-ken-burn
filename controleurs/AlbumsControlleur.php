@@ -6,7 +6,7 @@ function albums()
     $donneesSlider = array();
     $identifiantsEnvoyes = array();
     $cheminsImage = array();
-    $donneesREL = getRelUserImageSliderManager()->getRelUserImageSliderByLogin('EtoileNocturne');
+    $donneesREL = getRelUserImageSliderManager()->getRelUserImageSliderByLogin($_SESSION['login']);
 
     if(!empty($donneesREL)) {
         foreach ($donneesREL as $relationI)

@@ -90,18 +90,19 @@
 
             <div class="row">
                 <?php
-                    foreach($donneesSlider as $donnee)
-                    {
-                        echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
-                        echo '<img class="card-img-top" src="'.$cheminsImage[$donnee->getIdSlider()].'" alt="">';
-                        echo '<div class="card-body">';
-                        echo '<p class="card-text">'.$donnee->getNom().'</p>';
-                        echo '<div class="d-flex justify-content-between align-items-center">';
-                        echo '<div class="btn-group"><button type="button" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">View</button>';
-                        echo ' <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div>';
-                        $result = $donnee->getDateCreation()->format('d/m/Y');
-                        echo '<small class="text-muted">'.$result.'</small>';
-                        echo '</div></div></div></div>';
+                    if(!empty($donneesSlider)) {
+                        foreach ($donneesSlider as $donnee) {
+                            echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
+                            echo '<img class="card-img-top" src="' . $cheminsImage[$donnee->getIdSlider()] . '" alt="">';
+                            echo '<div class="card-body">';
+                            echo '<p class="card-text">' . $donnee->getNom() . '</p>';
+                            echo '<div class="d-flex justify-content-between align-items-center">';
+                            echo '<div class="btn-group"><button type="button" id="' . $donnee->getIdSlider() . '" class="btn btn-sm btn-outline-secondary">View</button>';
+                            echo ' <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div>';
+                            $result = $donnee->getDateCreation()->format('d/m/Y');
+                            echo '<small class="text-muted">' . $result . '</small>';
+                            echo '</div></div></div></div>';
+                        }
                     }
                 ?>
             </div>
