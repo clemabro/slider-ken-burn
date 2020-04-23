@@ -73,7 +73,7 @@ class SliderManager
         }
     }
 
-    public function updateSider(Slider $slider)
+    public function updateSlider(Slider $slider)
     {
         $statement = $this->_db->prepare("UPDATE slider SET 
                                             nom = :nom,
