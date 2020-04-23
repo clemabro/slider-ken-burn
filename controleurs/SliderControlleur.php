@@ -59,3 +59,10 @@ function uploadImage($idSlider) {
     return $idSlider;
 
 }
+
+function viewSlider()
+{
+    var_dump($_POST);
+    $title = "Ma Collection";
+    require 'vues/Slider/view.php';
+}
