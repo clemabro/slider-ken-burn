@@ -40,7 +40,7 @@ CREATE TABLE image(
 
 CREATE TABLE slider(
         idSlider     Int  Auto_increment  NOT NULL ,
-        nom          Varchar (50) NOT NULL ,
+        nom          Varchar (50) ,
         dateCreation Date NOT NULL ,
         dateMaj      Date NOT NULL
 	,CONSTRAINT slider_PK PRIMARY KEY (idSlider)
