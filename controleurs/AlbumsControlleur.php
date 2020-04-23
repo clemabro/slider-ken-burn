@@ -3,6 +3,7 @@
 
 function albums()
 {
+
     $donneesSlider = array();
     $identifiantsEnvoyes = array();
     $cheminsImage = array();

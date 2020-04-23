@@ -5,6 +5,7 @@ require_once 'modeles/entites/Image.php';
 
 function creationDiapo()
 {
+    $title = "Création Slides";
     require 'vues/Slider/create.php';
 }
 
