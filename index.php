@@ -40,6 +40,7 @@ switch ($request) {
         break;
     case '/'.$dossierActuel.'/ajoutImage':
         uploadImage();
+        break;
     case '/'.$dossierActuel.'/viewSlider':
         viewSlider();
         break;

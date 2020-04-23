@@ -10,7 +10,6 @@ function creationDiapo()
 }
 
 function uploadImage() {
-    var_dump($_POST);
     $idSlider = $_POST['idSlider'];
 
     if($idSlider == 0){
@@ -46,13 +45,12 @@ function uploadImage() {
 
     $newImage = getImageManager()->createImage($image);
 
-    var_dump($newImage);
     $relUsImSlMa = new RelUserImageSlider(array(
         'login' => $_SESSION['login'],
         'idSlider' => $idSlider,
         'idImage' => $newImage->getIdImage()
     ));
-    
+
     getRelUserImageSliderManager()->createRelUserImageSlider($relUsImSlMa);
 
     header('Content-Type: application/json;charset=utf-8');
