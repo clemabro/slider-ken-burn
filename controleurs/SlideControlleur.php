@@ -9,9 +9,11 @@ function creationDiapo()
     require 'vues/Slider/create.php';
 }
 
-function uploadImage($idSlider) {
+function uploadImage() {
+    var_dump($_POST);
+    $idSlider = $_POST['idSlider'];
 
-    if($idSlider = 0){
+    if($idSlider == 0){
         $slider = new Slider(array(
                 'nom' => "",
                 'dateCreation' => date("Y/m/d"),
@@ -21,42 +23,42 @@ function uploadImage($idSlider) {
         $idSlider = $newSlider->getIdSlider();
     }
 
+
     $target_dir = 'vues/img/'.$_SESSION['login'].'/';
     $target_file = $target_dir.uniqid();
-    $imageFileType = pathinfo($_FILES["imgProfil"]["name"], PATHINFO_EXTENSION);
+    $imageFileType = pathinfo($_FILES["image"]["name"],PATHINFO_EXTENSION);
+
+    if (!file_exists($target_dir)){
+        mkdir($target_dir, 777);
+    }
+
+    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file.'.'.$imageFileType);
 
     if (file_exists($target_file)) {
         header('HTTP/1.1 500 Internal Server Error');
         $uploadOk = 0;
     }
 
-    if ($uploadOk == 0) {
-        header('HTTP/1.1 500 Internal Server Error');
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["imgProfil"]["tmp_name"], $target_file.'.'.$imageFileType)) {
-
-
-        } else {
-            header('HTTP/1.1 500 Internal Server Error');
-        }
-    }
-
-
     $image = new Image(array(
-        'chemin' => $target_dir.$target_file
+        'chemin' => $target_file.$imageFileType,
+        'hauteur_destination'=>0.0
     ));
 
     $newImage = getImageManager()->createImage($image);
 
+    var_dump($newImage);
     $relUsImSlMa = new RelUserImageSlider(array(
-        'idLogin' => $_SESSION['login'],
+        'login' => $_SESSION['login'],
         'idSlider' => $idSlider,
         'idImage' => $newImage->getIdImage()
     ));
+    
     getRelUserImageSliderManager()->createRelUserImageSlider($relUsImSlMa);
 
-    return $idSlider;
+    header('Content-Type: application/json;charset=utf-8');
+    echo json_encode(array(
+        'idSlider' => $idSlider
+    ));
 
 }
 

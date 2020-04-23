@@ -27,6 +27,7 @@ include_once 'vues/ressources/navBar.php';
            <div class="form-group">
                 <input type="file" id="inputPicture"  name="image" multiple="multiple" />
            </div>
+           <input type="hidden" id="identifiantSlider" value="5"></form>
        </form>
     </div>
     <script type="text/javascript" src="vues/Slider/ajaxImageUpload.js"></script>

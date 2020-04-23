@@ -61,7 +61,7 @@ class RelUserImageSliderManager
 
     public function createRelUserImageSlider(RelUserImageSlider $relUserImageSlider)
     {
-        $statement = $this->_db->prepare("INSERT INTO reluserimageslider VALUES (:login,
+        $statement = $this->_db->prepare("INSERT INTO reluserimageslider (login, idImage, idSlider) VALUES (:login,
                                             :idImage,
                                             :idSlider)");
 
