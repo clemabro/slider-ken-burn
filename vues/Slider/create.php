@@ -19,17 +19,17 @@ include_once 'vues/ressources/navBar.php';
     <div class="text-center container">
        <h1 class="text-center">Création Diaporama</h1>
        <hr/>
-       <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select image to upload:
-           <div>
-                <input type="file" name="fileToUpload" id="fileToUpload">
+       <form id="image" action="upload.php" method="post" enctype="multipart/form-data">
+           <div class="form-group">
+               <input type="text" name="username" id="username" tabindex="1" required class="text-center form-control" placeholder="Nom du Slide" value="">
            </div>
-            <input type="submit" value="Upload Image" name="submit">
+            Select image to upload:
+           <div class="form-group">
+                <input type="file" id="inputPicture"  name="image" multiple="multiple" />
+           </div>
        </form>
-            <input type="file" id="imageUploadForm"  name="image" multiple="multiple" />
-        </div>
     </div>
-
+    <script type="text/javascript" src="./ajaxImageUpload.js"></script>
 </body>
 
 <?php
