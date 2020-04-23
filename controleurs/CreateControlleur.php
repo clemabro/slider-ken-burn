@@ -1,5 +1,6 @@
 <?php
 require_once 'entites/Slider.php';
+require_once 'entites/Image.php';
 
 
 function creationDiapo()
@@ -10,11 +11,15 @@ function creationDiapo()
 function uploadImage($idSlider) {
 
     if($idSlider = 0){
-        $slider = new Slider();
-        $slider->
-    }else{
-
+        $slider = new Slider(array(
+                'nom' => "",
+                'dateCreation' => date("Y/m/d"),
+                'dateMaj' => date("Y/m/d")
+        ));
+        $newSlider = getSliderManager()->createSlider($slider);
+        $idSlider = $newSlider->getIdSlider();
     }
+
 
     $target_dir = 'vues/img/'.$_SESSION['login'].'/'';
     $target_file = $target_dir.uniqid();
