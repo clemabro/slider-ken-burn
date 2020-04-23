@@ -29,7 +29,7 @@ include_once 'vues/ressources/navBar.php';
            </div>
        </form>
     </div>
-    <script type="text/javascript" src="./ajaxImageUpload.js"></script>
+    <script type="text/javascript" src="vues/Slider/ajaxImageUpload.js"></script>
 </body>
 
 <?php

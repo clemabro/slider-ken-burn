@@ -58,8 +58,7 @@ class ImageManager
                                             :y_destination,
                                             :largeur_destination,
                                             :hauteur_destination,
-                                            :chemin,
-                                            :idTypeZoom)");
+                                            :chemin)");
 
         $statement->bindValue(":idImage", $image->getIdImage(), PDO::PARAM_INT);
         $statement->bindValue(":tempsAffichage", $image->getTempsAffichage(), PDO::PARAM_INT);
@@ -72,7 +71,6 @@ class ImageManager
         $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
         $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
-        $statement->bindValue(":idTypeZoom", $image->getIdTypeZoom(), PDO::PARAM_INT);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
 

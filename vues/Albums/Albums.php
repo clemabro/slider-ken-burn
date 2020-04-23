@@ -11,6 +11,7 @@ include_once 'vues/ressources/header.php';
 <body>
 <script src="vues/lib/main.min.js"></script>
 <link rel="stylesheet" href="vues/lib/main.min.css">
+<script src="vues/js/album/album.js"></script>
 <div class="loader"></div>
 <?php
     include_once 'vues/ressources/navBar.php';
@@ -34,6 +35,9 @@ include_once 'vues/ressources/header.php';
                     <span>Ma Collection</span>
                 </div>
             </div>
+            <form id="viewSliderForm" action="viewSlider" method="POST">
+                <input id="idSlider" name="idSlider" type="hidden" value="">
+            </form>
 
             <div class="row">
                 <?php
@@ -45,7 +49,7 @@ include_once 'vues/ressources/header.php';
                             echo '<div class="card-body">';
                             echo '<p class="card-text">'.$donnee->getNom().'</p>';
                             echo '<div class="d-flex justify-content-between align-items-center">';
-                            echo '<div class="btn-group"><button type="button" href="#" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">Voir</button>';
+                            echo '<div class="btn-group"><button type="button" href="#" onclick="viewSlider(event,'.$donnee->getIdSlider().')" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">Voir</button>';
                             echo '<button type="button" class="btn btn-sm btn-outline-secondary">Editer</button></div>';
                             $result = $donnee->getDateCreation()->format('d/m/Y');
                             echo '<small class="text-muted">'.$result.'</small>';

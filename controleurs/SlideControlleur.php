@@ -62,7 +62,14 @@ function uploadImage($idSlider) {
 
 function viewSlider()
 {
-    var_dump($_POST);
-    $title = "Ma Collection";
-    require 'vues/Slider/view.php';
+    if(!isset($_POST['idSlider']))
+    {
+        header('Location: albums');
+    } 
+    else 
+    {
+        $title = "Ma Collection";
+        $slider = getSliderManager()->getSliderById($_POST['idSlider']);
+        require 'vues/Slider/view.php';
+    }
 }
