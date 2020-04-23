@@ -4,6 +4,7 @@
 */
 function connexion()
 {
+    $title = "Me connecter";
     require_once 'vues/connexion.php';
 }
 

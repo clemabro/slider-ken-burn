@@ -9,6 +9,7 @@
     <script src="vues/lib/notiflix/notiflix-2.1.3.min.js"></script>
     <link rel="stylesheet" href="vues/css/connexion/connexion.css">
     <script src="vues/js/connexion/connexion.js"></script>
+    <title><?php echo $title;?></title>
 </head>
 <body>
     <div class="container">
