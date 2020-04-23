@@ -2,7 +2,7 @@
 
 function creationDiapo()
 {
-    require_once 'vues/creationDiapo/creationDiapo.php';
+    require_once 'vues/Slider/create.php';
 }
 
 function uploadImage($idSlider) {

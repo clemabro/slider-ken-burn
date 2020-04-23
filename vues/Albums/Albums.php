@@ -21,7 +21,7 @@ include_once 'vues/ressources/header.php';
             <h1 class="jumbotron-heading">Bonjour <?php echo $_SESSION['login']; ?></h1>
             <p class="lead text-muted">Vous trouverez ci-dessous l'ensemble des diaporamas que vous avez créé</p>
             <p>
-                <a href="#" class="btn btn-primary my-2">Créer un nouveau diaporama</a>
+                <a href="creationDiapo" class="btn btn-primary my-2">Créer un nouveau diaporama</a>
                 
             </p>
         </div>
