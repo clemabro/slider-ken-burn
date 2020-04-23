@@ -9,6 +9,8 @@
     <script src="vues/lib/notiflix/notiflix-2.1.3.min.js"></script>
     <link rel="stylesheet" href="vues/css/connexion/connexion.css">
     <script src="vues/js/connexion/connexion.js"></script>
+    <link rel="icon" href="vues/img/favicon.ico"/>
+    <title><?php echo $title;?></title>
 </head>
 <body>
     <div class="container">
@@ -31,10 +33,10 @@
                             <div class="col-lg-12">
                                 <form id="login-form" action="" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="username" id="username" tabindex="1" require class="form-control" placeholder="Nom d'utilisateur" value="">
+                                        <input type="text" name="username" id="username" tabindex="1" required class="form-control" placeholder="Nom d'utilisateur" value="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
+                                        <input type="password" name="password" id="password" tabindex="2" required class="form-control" placeholder="Mot de passe">
                                     </div>
                                     <!--
                                     <div class="form-group text-center">

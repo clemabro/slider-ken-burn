@@ -34,6 +34,9 @@ switch ($request) {
     case '/'.$dossierActuel.'/connexionUser':
         connexionUser();
         break;
+    case '/'.$dossierActuel.'/deconnexion':
+        deconnexion();
+        break;
     default:
         http_response_code(404);
         require __DIR__.'/vues/404.php';

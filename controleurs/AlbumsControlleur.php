@@ -21,6 +21,8 @@ function albums()
 
         }
     }
+
+    $title = "Ma Collection";
     require __DIR__.'/../vues/Albums/albums.php';
 }
 

@@ -4,6 +4,7 @@
 */
 function connexion()
 {
+    $title = "Me connecter";
     require_once 'vues/connexion.php';
 }
 
@@ -65,5 +66,20 @@ function connexionUser()
     //On retourne un booleen avec true si l'identifiant et le mot de passe sont bon et false si il y' a eu un problème dans la connexion
     header('Content-Type: application/json;charset=utf-8');
     echo json_encode($isCompteExiste);
+}
+
+function deconnexion()
+{
+    // Démarrage ou restauration de la session
+    session_start();
+    // Réinitialisation du tableau de session
+    // On le vide intégralement
+    $_SESSION = array();
+    // Destruction de la session
+    session_destroy();
+    // Destruction du tableau de session
+    unset($_SESSION);
+    //Redirection vers la page de connexion
+    header('Location: connexion');
 }
 ?>
