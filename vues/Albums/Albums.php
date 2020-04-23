@@ -21,7 +21,7 @@ include_once 'vues/ressources/header.php';
 <main id="main" role="main">
     <section class="jumbotron text-center" id="mainBanner">
         <div class="container">
-            <h1 class="jumbotron-heading">Vos Albums</h1>
+            <h1 class="jumbotron-heading">Bonjour <?php echo $_SESSION['login']; ?></h1>
             <p class="lead text-muted">Vous trouverez ci-dessous l'ensemble des diaporamas que vous avez créé</p>
             <p>
                 <a href="#" class="btn btn-primary my-2">Créer un nouveau diaporama</a>
@@ -40,18 +40,24 @@ include_once 'vues/ressources/header.php';
 
             <div class="row">
                 <?php
-                    foreach($donneesSlider as $donnee)
-                    {
-                        echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
-                        echo '<img class="card-img-top" src="'.$cheminsImage[$donnee->getIdSlider()].'" alt="">';
-                        echo '<div class="card-body">';
-                        echo '<p class="card-text">'.$donnee->getNom().'</p>';
-                        echo '<div class="d-flex justify-content-between align-items-center">';
-                        echo '<div class="btn-group"><button type="button" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">View</button>';
-                        echo ' <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div>';
-                        $result = $donnee->getDateCreation()->format('d/m/Y');
-                        echo '<small class="text-muted">'.$result.'</small>';
-                        echo '</div></div></div></div>';
+                    if(!empty($donneesSlider)) {
+                        foreach($donneesSlider as $donnee)
+                        {
+                            echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
+                            echo '<img class="card-img-top" src="'.$cheminsImage[$donnee->getIdSlider()].'" alt="">';
+                            echo '<div class="card-body">';
+                            echo '<p class="card-text">'.$donnee->getNom().'</p>';
+                            echo '<div class="d-flex justify-content-between align-items-center">';
+                            echo '<div class="btn-group"><button type="button" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">View</button>';
+                            echo ' <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></div>';
+                            $result = $donnee->getDateCreation()->format('d/m/Y');
+                            echo '<small class="text-muted">'.$result.'</small>';
+                            echo '</div></div></div></div>';
+                        }
+                    } else {
+                        echo '<div class="container text-center">
+                        <p class="lead text-muted">Vous n\'avez aucun diaporama</p>
+                        </div>';
                     }
                 ?>
             </div>
