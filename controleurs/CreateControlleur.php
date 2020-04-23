@@ -1,11 +1,11 @@
 <?php
-require_once 'entites/Slider.php';
-require_once 'entites/Image.php';
+require_once 'modeles/entites/Slider.php';
+require_once 'modeles/entites/Image.php';
 
 
 function creationDiapo()
 {
-    require_once 'vues/creationDiapo/creationDiapo.php';
+    require_once 'vues/slider/create.php';
 }
 
 function uploadImage($idSlider) {
@@ -20,10 +20,8 @@ function uploadImage($idSlider) {
         $idSlider = $newSlider->getIdSlider();
     }
 
-
-    $target_dir = 'vues/img/'.$_SESSION['login'].'/'';
+    $target_dir = 'vues/img/'.$_SESSION['login'].'/';
     $target_file = $target_dir.uniqid();
-    $uploadOk = 1;
     $imageFileType = pathinfo($_FILES["imgProfil"]["name"], PATHINFO_EXTENSION);
 
     if (file_exists($target_file)) {
@@ -42,4 +40,21 @@ function uploadImage($idSlider) {
             header('HTTP/1.1 500 Internal Server Error');
         }
     }
+
+
+    $image = new Image(array(
+        'chemin' => $target_dir.$target_file
+    ));
+
+    $newImage = getImageManager()->createImage($image);
+
+    $relUsImSlMa = new RelUserImageSlider(array(
+        'idLogin' => $_SESSION['login'],
+        'idSlider' => $idSlider,
+        'idImage' => $newImage->getIdImage()
+    ));
+    getRelUserImageSliderManager()->createRelUserImageSlider($relUsImSlMa);
+
+    return $idSlider;
+
 }
