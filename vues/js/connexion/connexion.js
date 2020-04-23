@@ -20,9 +20,8 @@ $(function() {
 function initNotiflix()
 {
 	Notiflix.Notify.Init({
-		position:"left-bottom",
-		distance:"36%",
-		width: '553px',
+		position:"right-top",
+		width: '400px',
 		timeout:3000
 	});
 }
