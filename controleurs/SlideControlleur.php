@@ -41,14 +41,9 @@ function uploadImage()
             header('HTTP/1.1 500 Internal Server Error');
             $uploadOk = 0;
         }
-    $image = new Image(array(
-        'chemin' => $target_file.'.'.$imageFileType,
-        'hauteur_destination'=>0.0
-    ));
-
         $image = new Image(array(
-            'chemin' => $target_file .'.'. $imageFileType,
-            'hauteur_destination' => 0.0
+            'chemin' => $target_file.'.'.$imageFileType,
+            'hauteur_destination'=>0.0
         ));
 
         $newImage = getImageManager()->createImage($image);

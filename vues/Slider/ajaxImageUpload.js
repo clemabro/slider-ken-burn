@@ -58,5 +58,6 @@ function pageEdition(e){
             console.log(e);
             console.log('ok');
         }
+    })
 }
 
