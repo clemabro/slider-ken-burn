@@ -17,6 +17,9 @@ include_once 'vues/ressources/navBar.php';
 ?>
 
     <div class="text-center container">
+        <form id="editSliderForm" action="editionDiapo" method="POST">
+            <input id="identifiantSlider" name="identifiantSlider" type="hidden" value="0">
+        </form>
        <h1 class="text-center">Création Diaporama</h1>
        <hr/>
        <form id="image" action="upload.php" method="post" enctype="multipart/form-data">
@@ -27,9 +30,7 @@ include_once 'vues/ressources/navBar.php';
            <div class="form-group">
                 <input type="file" id="inputPicture"  name="image" multiple="multiple" />
            </div>
-           <form id="viewSliderForm" action="viewSlider" method="POST">
-               <input id="identifiantSlider" name="identifiantSlider" type="hidden" value="0">
-           </form>
+           
            <input type="submit" name="slider-submit" id="slider-submit" tabindex="4" class="form-control btn btn-login" onclick="pageEdition(event);" value="Passer à L'édition des images">
        </form>
 

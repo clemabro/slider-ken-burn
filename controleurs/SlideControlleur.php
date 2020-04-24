@@ -81,14 +81,13 @@ function modifierSlider(){
 }
 
 function edit(){
-    $idSlider = $_POST['idSliderModif'];
+    $idSlider = $_POST['identifiantSlider'];
 
-    var_dump($_POST);
-
-    if(isset($_POST['idSliderModif'])) {
+    $donneesImages = array();
+    if(isset($_POST['identifiantSlider'])) {
 
         var_dump($idSlider);
-        $donneesImage = array();
+        
         $identifiantsEnvoyes = array();
         $donneesREL = getRelUserImageSliderManager()->getRelUserImageSliderByLogin($_SESSION['login']);
 
@@ -96,7 +95,7 @@ function edit(){
             foreach ($donneesREL as $relationI) {
                 if ($relationI->getIdSlider() == $idSlider) {
 
-                    array_push($donneesImage, getImageManager()->getImageById($relationI->getIdImage()));
+                    array_push($donneesImages, getImageManager()->getImageById($relationI->getIdImage()));
 
                 }
 

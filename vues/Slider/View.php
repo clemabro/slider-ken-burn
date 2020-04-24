@@ -1,4 +1,11 @@
 <?php
+// On teste si la variable de session existe et contient une valeur
+ if(empty($_SESSION['login'])) 
+ {
+   // Si inexistante ou nulle, on redirige vers le formulaire de login
+   header('Location: connexion');
+   exit();
+ }
     require_once 'vues/ressources/header.php';
 ?>
 <link rel="stylesheet" href="vues/css/slide/view.css">

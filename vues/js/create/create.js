@@ -53,24 +53,12 @@ function pageEdition(e){
         success: function (data) {
             console.log(data);
             console.log('ok');
-            document.location.href = "editionDiapo";
+            $('#editSliderForm').submit();
         },
         error: function (e) {
             console.log(e);
             console.log('pas ok');
         }
-<<<<<<< HEAD:vues/js/create/create.js
 });
-}
-
-function editSlider(e, idSlider)
-{
-    e.preventDefault();
-    // Envoie en post l'id du slider a constulter.
-    $('#viewSliderForm').find('#idSlider').val(idSlider);
-    $('#viewSliderForm').submit();
-=======
-    })
->>>>>>> 9ec39283f4a380f4b9441cba8b37a0924efe0a2f:vues/Slider/ajaxImageUpload.js
 }
 

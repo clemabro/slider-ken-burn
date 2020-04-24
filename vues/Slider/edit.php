@@ -8,7 +8,6 @@
         <div class="slideshow-container">
 
             <?php
-                var_dump($donneesImages);
                 if(!empty($donneesImages)) {
                     $index = 1;
                     var_dump($donneesImages);
