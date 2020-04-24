@@ -23,3 +23,4 @@ Une fois l'application lancé, il suffit de vous y inscrire et vous pourrez cré
 
 ## Fonctionalités non implémentées
 * La visualisation du diaporama avec l'effet ken burn.
+* La configuration de l'effet.
