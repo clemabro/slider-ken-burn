@@ -41,10 +41,6 @@ function uploadImage()
             header('HTTP/1.1 500 Internal Server Error');
             $uploadOk = 0;
         }
-    $image = new Image(array(
-        'chemin' => $target_file.'.'.$imageFileType,
-        'hauteur_destination'=>0.0
-    ));
 
         $image = new Image(array(
             'chemin' => $target_file .'.'. $imageFileType,
@@ -52,7 +48,6 @@ function uploadImage()
         ));
 
         $newImage = getImageManager()->createImage($image);
-
 
         $relUsImSlMa = new RelUserImageSlider(array(
             'login' => $_SESSION['login'],
@@ -69,6 +64,47 @@ function uploadImage()
         'etat' => $etat
     ));
 
+}
+
+function modifierSlider(){
+    $idSlider = $_POST['idSliderModif'];
+    $nomSlider = $_POST['nomSlider'];
+
+
+    $slider = getSliderManager()->getSliderById($idSlider);
+    $slider->setNom($nomSlider);
+    getSliderManager()->updateSlider($slider);
+    header('Content-Type: application/json;charset=utf-8');
+    echo json_encode(array(
+        'idSlider' => $idSlider
+    ));
+}
+
+function edit(){
+    $idSlider = $_POST['idSliderModif'];
+
+    var_dump($_POST);
+
+    if(isset($_POST['idSliderModif'])) {
+
+        var_dump($idSlider);
+        $donneesImage = array();
+        $identifiantsEnvoyes = array();
+        $donneesREL = getRelUserImageSliderManager()->getRelUserImageSliderByLogin($_SESSION['login']);
+
+        if (!empty($donneesREL)) {
+            foreach ($donneesREL as $relationI) {
+                if ($relationI->getIdSlider() == $idSlider) {
+
+                    array_push($donneesImage, getImageManager()->getImageById($relationI->getIdImage()));
+
+                }
+
+            }
+        }
+    }
+    $title = "Edition Images";
+    require 'vues/Slider/edit.php';
 }
 
 function viewSlider()

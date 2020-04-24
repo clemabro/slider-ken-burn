@@ -23,8 +23,14 @@ switch ($request) {
     case '/'.$dossierActuel.'/albums':
         albums();
         break;
+    case '/'.$dossierActuel.'/editionDiapo':
+        edit();
+        break;
     case '/'.$dossierActuel.'/creationDiapo':
         creationDiapo();
+        break;
+    case '/'.$dossierActuel.'/modifierSlider':
+        modifierSlider();
         break;
     case '/'.$dossierActuel.'/isExistUser':
         isExistUser();

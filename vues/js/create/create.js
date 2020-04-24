@@ -24,7 +24,6 @@ $("#inputPicture").on('change', function(){
             },
             error: function (e) {
             console.log(e);
-                console.log('ok');
         }
     });
 });
@@ -38,9 +37,9 @@ function pageEdition(e){
 
     e.preventDefault();
     var formdataToSend = new FormData();
-    formdataToSend.append("idSlider", $('#identifiantSlider').val());
-    formdataToSend.append("nomSlider", $('#identifiantSlider').val());
-
+    formdataToSend.append("idSliderModif", $('#identifiantSlider').val());
+    formdataToSend.append("nomSlider", $('#username').val());
+    
 
     $.ajax({
         url: 'modifierSlider',
@@ -52,11 +51,22 @@ function pageEdition(e){
         cache : false,
         timeout: 4000,
         success: function (data) {
-            console.log(data)
+            console.log(data);
+            console.log('ok');
+            document.location.href = "editionDiapo";
         },
         error: function (e) {
             console.log(e);
-            console.log('ok');
+            console.log('pas ok');
         }
+});
+}
+
+function editSlider(e, idSlider)
+{
+    e.preventDefault();
+    // Envoie en post l'id du slider a constulter.
+    $('#viewSliderForm').find('#idSlider').val(idSlider);
+    $('#viewSliderForm').submit();
 }
 

@@ -12,7 +12,7 @@ function albums()
     if(!empty($donneesREL)) {
         foreach ($donneesREL as $relationI)
         {
-            if (!array_key_exists($relationI->getIdSlider(),$identifiantsEnvoyes))
+            if (!in_array($relationI->getIdSlider(),$identifiantsEnvoyes))
             {
                 array_push($donneesSlider,getSliderManager()->getSliderById($relationI->getIdSlider()));
                 $cheminsImage[strval($relationI->getIdSlider())] = getImageManager()->getImageById($relationI->getIdImage())->getChemin();

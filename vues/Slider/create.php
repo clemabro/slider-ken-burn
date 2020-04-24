@@ -27,12 +27,14 @@ include_once 'vues/ressources/navBar.php';
            <div class="form-group">
                 <input type="file" id="inputPicture"  name="image" multiple="multiple" />
            </div>
-           <input type="hidden" id="identifiantSlider" value="0">
-           <input type="submit" name="slider-submit" id="slider-submit" require tabindex="4" class="form-control btn btn-login" onclick="pageEdition(event);" value="Passer à L'édition des images">
+           <form id="viewSliderForm" action="viewSlider" method="POST">
+               <input id="identifiantSlider" name="identifiantSlider" type="hidden" value="0">
+           </form>
+           <input type="submit" name="slider-submit" id="slider-submit" tabindex="4" class="form-control btn btn-login" onclick="pageEdition(event);" value="Passer à L'édition des images">
        </form>
 
     </div>
-    <script type="text/javascript" src="vues/Slider/ajaxImageUpload.js"></script>
+    <script type="text/javascript" src="vues/js/create/create.js"></script>
 
     <script src="vues/lib/notiflix/notiflix-2.1.3.min.js"></script>
 <link rel="stylesheet" href="vues/lib/notiflix/notiflix-2.1.3.min.css">
