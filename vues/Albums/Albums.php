@@ -11,6 +11,8 @@ include_once 'vues/ressources/header.php';
 <body>
 <script src="vues/lib/main.min.js"></script>
 <link rel="stylesheet" href="vues/lib/main.min.css">
+<link rel="stylesheet" href="vues/lib/notiflix/notiflix-2.1.3.min.css">
+<script src="vues/lib/notiflix/notiflix-2.1.3.min.js"></script>
 <script src="vues/js/album/album.js"></script>
 <div class="loader"></div>
 <?php
@@ -44,13 +46,14 @@ include_once 'vues/ressources/header.php';
                     if(!empty($donneesSlider)) {
                         foreach($donneesSlider as $donnee)
                         {
-                            echo '<div class="col-md-4"><div class="card mb-4 box-shadow">';
+                            echo '<div class="col-md-4" id="diapo-'.$donnee->getIdSlider().'"><div class="card mb-4 box-shadow">';
                             echo '<img class="card-img-top" src="'.$cheminsImage[$donnee->getIdSlider()].'" alt="">';
                             echo '<div class="card-body">';
                             echo '<p class="card-text">'.$donnee->getNom().'</p>';
                             echo '<div class="d-flex justify-content-between align-items-center">';
                             echo '<div class="btn-group"><button type="button" href="#" onclick="viewSlider(event,'.$donnee->getIdSlider().')" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">Voir</button>';
-                            echo '<button type="button" class="btn btn-sm btn-outline-secondary">Editer</button></div>';
+                            echo '<button type="button" class="btn btn-sm btn-outline-secondary">Editer</button>';
+                            echo '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteSlider(event, '.$donnee->getIdSlider().', \''.$donnee->getNom().'\')">Supprimer</button></div>';
                             $result = $donnee->getDateCreation()->format('d/m/Y');
                             echo '<small class="text-muted">'.$result.'</small>';
                             echo '</div></div></div></div>';

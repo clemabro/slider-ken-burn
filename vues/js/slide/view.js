@@ -1,4 +1,5 @@
 var slideIndex = 1;
+var interval;
 
 // Next/previous controls
 function plusSlides(n) {
@@ -21,9 +22,14 @@ function showSlides(n) {
       slides[i].style.display = "none";
   }
   $(slides[slideIndex-1]).fadeIn();
-  //slides[slideIndex-1].style.display = "block";
+  
+  // Change les image toutees x secondes 
+  // A enlever lorsque l'on aura l'animation
+  clearInterval(interval);
+  interval = setInterval(function(){plusSlides(+1)}, 4000);
 }
 
 $( document ).ready(function() {
     showSlides(slideIndex);
+    interval = setInterval(function(){plusSlides(+1)}, 4000);
 });

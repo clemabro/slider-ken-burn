@@ -50,6 +50,9 @@ switch ($request) {
     case '/'.$dossierActuel.'/viewSlider':
         viewSlider();
         break;
+    case '/'.$dossierActuel.'/supprimerDiapo':
+        supprimerSlider();
+        break;
     default:
         http_response_code(404);
         $title = "404";
