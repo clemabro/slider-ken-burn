@@ -6,6 +6,7 @@ if(empty($_SESSION['login']))
     header('Location: connexion');
     exit();
 }
+
 include_once 'vues/ressources/header.php';
 ?>
 

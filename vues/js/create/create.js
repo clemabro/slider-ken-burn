@@ -59,6 +59,5 @@ function pageEdition(e){
             console.log(e);
             console.log('pas ok');
         }
-});
+    });
 }
-

@@ -9,7 +9,6 @@
     require_once 'vues/ressources/header.php';
 ?>
 <link rel="stylesheet" href="vues/css/slide/view.css">
-
 <?php
     include_once 'vues/ressources/navBar.php';
 ?>

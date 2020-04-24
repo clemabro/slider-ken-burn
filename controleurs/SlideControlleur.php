@@ -127,3 +127,39 @@ function viewSlider()
         require 'vues/Slider/view.php';
     }
 }
+
+function supprimerSlider()
+{
+    $idSlider = $_POST['idSlider'];
+    $login = $_SESSION['login'];
+
+    if(!isset($idSlider))
+    {
+        header('Location: albums');
+    }
+
+    $rels = getRelUserImageSliderManager()->getRelUserImageSliderByLoginAndSlider($login, $idSlider);
+
+    $imgsToDelete = array();
+
+    foreach ($rels as $rel)
+    {
+        array_push($imgsToDelete, getImageManager()->getImageById($rel->getIdImage()));
+    }
+
+    foreach ($imgsToDelete as $img)
+    {
+        if (file_exists($img->getChemin())) {
+            unlink($img->getChemin());
+        }
+        getRelUserImageSliderManager()->deleteRelUserImageSlider($login, $img->getIdImage(), $idSlider);
+        getImageManager()->deleteImage($img->getIdImage());
+    }
+
+    getSliderManager()->deleteSlider($idSlider);
+
+    header('Content-Type: application/json;charset=utf-8');
+    echo json_encode(array(
+        'deleted' => true
+    ));
+}
