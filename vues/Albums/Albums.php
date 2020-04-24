@@ -52,7 +52,7 @@ include_once 'vues/ressources/header.php';
                             echo '<p class="card-text">'.$donnee->getNom().'</p>';
                             echo '<div class="d-flex justify-content-between align-items-center">';
                             echo '<div class="btn-group"><button type="button" href="#" onclick="viewSlider(event,'.$donnee->getIdSlider().')" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Voir</button>';
-                            echo '<button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i> Editer</button>';
+                            echo '<button type="button" class="btn btn-sm btn-outline-secondary d-none"><i class="fa fa-edit"></i> Editer</button>';
                             echo '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteSlider(event, '.$donnee->getIdSlider().', \''.$donnee->getNom().'\')"><i class="fa fa-trash"></i> Supprimer</button></div>';
                             $result = $donnee->getDateCreation()->format('d/m/Y');
                             echo '<small class="text-muted">'.$result.'</small>';

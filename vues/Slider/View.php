@@ -17,7 +17,7 @@
     <small class="text-muted"><?php echo $slider->getDateCreation()->format('d/m/Y'); ?></small>
     <hr/>
 </div>
-<div class="slideshow-container">
+<div class="slideshow-container justify-content-center">
 
   <?php
     if(!empty($imgs))
@@ -26,9 +26,8 @@
         foreach($imgs as $img)
         {
             echo '<div class="mySlides">';
-            echo '<div class="numbertext">'.$counter.' / '.(count($imgs)).'</div>';
-            echo '<img src="'.$img->getChemin().'" style="width: 100%;
-            height: auto; max-height:800;">';
+            echo '<div class="numbertext ml-5">'.$counter.' / '.(count($imgs)).'</div>';
+            echo '<img src="'.$img->getChemin().'" style="width: 100%; height: auto; max-height:800;margin-left :auto;margin-right:auto">';
             echo '<div class="text">'.$img->getTitre().'</div>';
             echo '</div>';
             $counter++;
