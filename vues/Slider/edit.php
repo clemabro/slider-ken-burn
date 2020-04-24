@@ -20,9 +20,9 @@ include_once 'vues/ressources/header.php';
                 if(!empty($donneesImages)) {
                     $index = 1;
                     foreach($donneesImages as $donnee){
-                        echo'<div class="mySlides">';
+                        echo'<div id='.$donnee->getIdImage().' class="mySlides">';
                         echo'<div class="numbertext">'.$index.'/'.count($donneesImages).'</div>';
-                        echo'<img class="imgcropper" src="'.$donnee->getChemin().'" >';
+                        echo'<img  class="imgcropper" src="'.$donnee->getChemin().'" >';
                         echo'<div class="text">'.$donnee->getTitre().'</div>';
                         echo'</div>';
                         $index++;
@@ -56,15 +56,15 @@ include_once 'vues/ressources/header.php';
         <?php
             if(!empty($donneesImages)) {
                 foreach ($donneesImages as $donnee) {
-                    echo'<div id="div'.$donnee->getIdImage().'" class="form-group">';
-                    echo'<label class ="offset-md-3 col-md-3 text-center taille">Largeur Source</label>';
-                    echo'<label id="sourceHeight" class ="col-md-3 text-center  taille">Hauteur Source</label><br>';
-                    echo'<input type="text" id="width" class="offset-md-3 col-md-3 taille text-center form-control" placeholder="" value="">';
-                    echo'<input type="text" id="height" class="col-md-3 taille text-center form-control" placeholder="" value="">';
-                    echo'<label class ="offset-md-3 col-md-3 text-center taille">Largeur Destination</label>';
-                    echo'<label id="sourceHeight" class ="col-md-3 text-center  taille">Hauteur Destination</label><br>';
-                    echo'<input type="text" id="width" class="offset-md-3 col-md-3 taille text-center form-control" placeholder="" value="">';
-                    echo'<input type="text" id="height" class="col-md-3 taille text-center form-control" placeholder="" value="">';
+                    echo'<div class="infosImage" id="div'.$donnee->getIdImage().'" class="form-group">';
+                    echo'<label class ="col-md-3 text-center ">Largeur Source</label>';
+                    echo'<label id="sourceHeight" class ="col-md-3 text-center  ">Hauteur Source</label>';
+                    echo'<label class ="col-md-3 text-center ">Largeur Destination</label>';
+                    echo'<label id="sourceHeight" class ="col-md-3 text-center ">Hauteur Destination</label><br>';
+                    echo'<input type="text" id="SourceWidth'.$donnee->getIdImage().'" class="col-md-3 text-center" placeholder="" value="">';
+                    echo'<input type="text" id="SourceHeight'.$donnee->getIdImage().'" class="col-md-3 text-center" placeholder="" value="">';
+                    echo'<input type="text" id="DestinationWidth'.$donnee->getIdImage().'" class="col-md-3 text-center " placeholder="" value="">';
+                    echo'<input type="text" id="DestinationHeight'.$donnee->getIdImage().'" class="col-md-3 text-center" placeholder="" value="">';
                     echo'</div>';
                  }
             }
@@ -84,8 +84,11 @@ include_once 'vues/ressources/header.php';
                     minContainerHeight : 500,
                     zoomable : false,
                     crop(event) {
-                        $('#width').attr('value',parseInt(event.detail.width));
-                        $('#height').attr('value',parseInt(event.detail.height));
+                        var id = this.id;
+
+                        console.log('#div'+id);
+                        $('#SourceWidth'+id).attr('value',parseInt(event.detail.width));
+                        $('#SourceHeight'+id).attr('value',parseInt(event.detail.height));
                         console.log(event.detail.width);
                         console.log(event.detail.height);
                     },
@@ -94,5 +97,4 @@ include_once 'vues/ressources/header.php';
         </script>
         <script src="vues/js/slide/edit.js"></script>
     </body>
-
 </html>

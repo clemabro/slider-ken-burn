@@ -3,7 +3,7 @@ showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-
+    $('.infosImage').hide();
     showSlides(slideIndex += n);
 }
 
@@ -26,10 +26,12 @@ function showSlides(n) {
     }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
+
     }
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
+    $('#div'+slides[slideIndex-1].id).show();
     $(slides[slideIndex-1]).fadeIn();
     dots[slideIndex-1].className += " active";
 }
