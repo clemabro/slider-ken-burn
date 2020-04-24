@@ -1,13 +1,5 @@
 * {box-sizing:border-box}
 
-.imgcropper{
-    !important;
-    min-height: 500px;
-    max-width: 500px;
-}
-
-
-
 /* Slideshow container */
 .slideshow-container {
     max-width: 1000px;

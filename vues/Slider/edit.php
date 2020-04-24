@@ -60,6 +60,9 @@ include_once 'vues/ressources/header.php';
             images.each(function(){
                 const cropper = new Cropper(this, {
                     aspectRatio: 16 / 9,
+                    minContainerWidth : 1000,
+                    minContainerHeight : 500,
+                    zoomable : false,
                     crop(event) {
                         console.log(event.detail.width);
                         console.log(event.detail.height);
