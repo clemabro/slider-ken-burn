@@ -39,7 +39,7 @@ function pageEdition(e){
     var formdataToSend = new FormData();
     formdataToSend.append("idSliderModif", $('#identifiantSlider').val());
     formdataToSend.append("nomSlider", $('#username').val());
-    
+
 
     $.ajax({
         url: 'modifierSlider',

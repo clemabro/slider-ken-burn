@@ -24,7 +24,7 @@ function uploadImage()
     }
 
 
-    $target_dir = 'vues/img/' . $_SESSION['login'] . '/';
+    $target_dir = 'vues/img/users/' . $_SESSION['login'] . '/';
     $target_file = $target_dir . uniqid();
     $imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
