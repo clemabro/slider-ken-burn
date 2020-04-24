@@ -29,7 +29,8 @@ CREATE TABLE image(
         y_destination       Float  ,
         largeur_destination Float  ,
         hauteur_destination Float  ,
-        chemin              Varchar (255) NOT NULL
+        chemin              Varchar (255) NOT NULL,
+        titre               Varchar (50),
 	,CONSTRAINT image_PK PRIMARY KEY (idImage)
 )ENGINE=InnoDB;
 

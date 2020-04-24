@@ -59,7 +59,8 @@ class ImageManager
                                         y_destination,
                                         largeur_destination,
                                         hauteur_destination,
-                                        chemin
+                                        chemin,
+                                        titre
                                         ) VALUES (
                                             :tempsAffichage,
                                             :x_source,
@@ -70,7 +71,8 @@ class ImageManager
                                             :y_destination,
                                             :largeur_destination,
                                             :hauteur_destination,
-                                            :chemin)");
+                                            :chemin,
+                                            :titre)");
 
         $statement->bindValue(":tempsAffichage", $image->getTempsAffichage(), PDO::PARAM_INT);
         $statement->bindValue(":x_source", $image->getX_source());
@@ -82,6 +84,7 @@ class ImageManager
         $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
         $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
+        $statement->bindValue(":titre", $image->getTitre(), PDO::PARAM_STR);
         $statement->execute() or die(print_r($statement->errorInfo()));
         
         $statement = $this->_db->prepare("SELECT * FROM image where idImage = :idImage");
@@ -111,7 +114,7 @@ class ImageManager
                                             largeur_destination = :largeur_destination,
                                             hauteur_destination = :hauteur_destination,
                                             chemin = :chemin
-                                            idTypeZoom = :idTypeZoom WHERE idImage = :idImage");
+                                            titre = :titre WHERE idImage = :idImage");
 
         $statement->bindValue(":idImage", $image->getIdImage(), PDO::PARAM_INT);
         $statement->bindValue(":tempsAffichage", $image->getTempsAffichage(), PDO::PARAM_INT);
@@ -124,7 +127,7 @@ class ImageManager
         $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
         $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
-        $statement->bindValue(":idTypeZoom", $image->getIdTypeZoom(), PDO::PARAM_INT);
+        $statement->bindValue(":titre", $image->getTitre(), PDO::PARAM_STR);
 
         $statement->execute() or die(print_r($statement->errorInfo()));
     }
