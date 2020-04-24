@@ -1,5 +1,9 @@
 * {box-sizing:border-box}
 
+.taille{
+    float:left;
+}
+
 /* Slideshow container */
 .slideshow-container {
     max-width: 1000px;

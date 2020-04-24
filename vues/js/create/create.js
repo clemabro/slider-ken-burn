@@ -1,3 +1,7 @@
+
+var x = document.getElementById("slider-submit");
+x.style.display = "none";
+
 $("#inputPicture").on('change', function(){
     var formdataToSend = new FormData($('#image')[0]);
         formdataToSend.append("idSlider", $('#identifiantSlider').val());
