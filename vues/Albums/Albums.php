@@ -21,10 +21,10 @@ include_once 'vues/ressources/header.php';
 <main id="main" role="main">
     <section class="jumbotron text-center" id="mainBanner">
         <div class="container">
-            <h1 class="jumbotron-heading">Bonjour <?php echo $_SESSION['login']; ?></h1>
+            <h1 class="jumbotron-heading">Bonjour <?php echo $_SESSION['login']; ?> !</h1>
             <p class="lead text-muted">Vous trouverez ci-dessous l'ensemble des diaporamas que vous avez créé</p>
             <p>
-                <a href="creationDiapo" class="btn btn-primary my-2">Créer un nouveau diaporama</a>
+                <a href="creationDiapo" class="btn btn-primary my-2"><i class="fa fa-plus-square"></i> Créer un nouveau diaporama</a>
                 
             </p>
         </div>
@@ -51,9 +51,9 @@ include_once 'vues/ressources/header.php';
                             echo '<div class="card-body">';
                             echo '<p class="card-text">'.$donnee->getNom().'</p>';
                             echo '<div class="d-flex justify-content-between align-items-center">';
-                            echo '<div class="btn-group"><button type="button" href="#" onclick="viewSlider(event,'.$donnee->getIdSlider().')" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary">Voir</button>';
-                            echo '<button type="button" class="btn btn-sm btn-outline-secondary">Editer</button>';
-                            echo '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteSlider(event, '.$donnee->getIdSlider().', \''.$donnee->getNom().'\')">Supprimer</button></div>';
+                            echo '<div class="btn-group"><button type="button" href="#" onclick="viewSlider(event,'.$donnee->getIdSlider().')" id="'.$donnee->getIdSlider().'" class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i> Voir</button>';
+                            echo '<button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i> Editer</button>';
+                            echo '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteSlider(event, '.$donnee->getIdSlider().', \''.$donnee->getNom().'\')"><i class="fa fa-trash"></i> Supprimer</button></div>';
                             $result = $donnee->getDateCreation()->format('d/m/Y');
                             echo '<small class="text-muted">'.$result.'</small>';
                             echo '</div></div></div></div>';
