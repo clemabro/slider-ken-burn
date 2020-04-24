@@ -41,6 +41,10 @@ function uploadImage()
             header('HTTP/1.1 500 Internal Server Error');
             $uploadOk = 0;
         }
+    $image = new Image(array(
+        'chemin' => $target_file.'.'.$imageFileType,
+        'hauteur_destination'=>0.0
+    ));
 
         $image = new Image(array(
             'chemin' => $target_file .'.'. $imageFileType,
@@ -77,6 +81,14 @@ function viewSlider()
     {
         $title = "Ma Collection";
         $slider = getSliderManager()->getSliderById($_POST['idSlider']);
+        $rels = getRelUserImageSliderManager()->getRelUserImageSliderByLoginAndSlider($_SESSION['login'], $_POST['idSlider']);
+        $imgs = array();
+
+        foreach ($rels as $rel)
+        {
+            array_push($imgs, getImageManager()->getImageById($rel->getIdImage()));
+        }
+        
         require 'vues/Slider/view.php';
     }
 }

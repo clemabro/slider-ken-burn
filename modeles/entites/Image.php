@@ -12,7 +12,7 @@ class Image
     private $_largeur_destination;
     private $_hauteur_destination;
     private $_chemin;
-    private $_idTypeZoom;
+    private $_titre;
 
     public function __construct(array $donnees)
     {
@@ -79,8 +79,8 @@ class Image
         return $this->_chemin;
     }
 
-    public function getIdTypeZoom() {
-        return $this->_idTypeZoom;
+    public function getTitre() {
+        return $this->_titre;
     }
 
     /* SETTERS */
@@ -169,6 +169,12 @@ class Image
     public function setChemin($chemin) {
         if(is_string($chemin)) {
             $this->_chemin = $chemin;
+        }
+    }
+
+    public function setTitre($titre) {
+        if(is_string($titre)) {
+            $this->_titre = $titre;
         }
     }
 }

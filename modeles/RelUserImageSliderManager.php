@@ -59,6 +59,24 @@ class RelUserImageSliderManager
         return $result;
     }
 
+    public function getRelUserImageSliderByLoginAndSlider($login, $idSlider)
+    {
+        $result = [];
+        $statement = $this->_db->prepare('SELECT * FROM reluserimageslider WHERE login = :login AND idSlider = :idSlider');
+        
+        $statement->bindValue(':login',$login, PDO::PARAM_STR);
+        $statement->bindValue(':idSlider',$idSlider, PDO::PARAM_INT);
+
+        $statement->execute() or die(print_r($statement->errorInfo()));
+
+        while ($donnees = $statement->fetch(PDO::FETCH_ASSOC))
+        {
+            $result[] = new RelUserImageSlider($donnees);
+        }
+
+        return $result;
+    }
+
     public function createRelUserImageSlider(RelUserImageSlider $relUserImageSlider)
     {
         $statement = $this->_db->prepare("INSERT INTO reluserimageslider (login, idImage, idSlider) VALUES (:login,
