@@ -24,15 +24,18 @@ include_once 'vues/ressources/navBar.php';
        <h1 class="text-center">Création Diaporama</h1>
        <hr/>
        <form id="image" action="upload.php" method="post" enctype="multipart/form-data">
-           <div class="form-group">
-               <input type="text" name="username" id="username" tabindex="1" required class="text-center form-control" placeholder="Nom du Slide" value="">
-           </div>
+            <div class="form-group col-lg-4 offset-lg-4">
+                <input type="text" name="username" id="username" tabindex="1" required class="text-center form-control" placeholder="Nom du Slide" value="">
+            </div>
             Sélectionnez une par une les images à importer (Max 2Mo) :
-           <div class="form-group">
+            <div class="form-group">
                 <input type="file" id="inputPicture"  name="image" multiple="multiple" />
-           </div>
-           
-           <input type="submit" name="slider-submit" id="slider-submit" tabindex="4" class="form-control btn btn-login" onclick="pageEdition(event);" value="Passer à L'édition des images">
+            </div>
+            <div class="form-group col-lg-4 offset-lg-4">
+                <button type="submit" name="slider-submit" id="slider-submit" tabindex="4" class="form-control btn btn-login" onclick="pageEdition(event);" value="">
+                Passer à L'édition des images <i class="fa fa-chevron-right"></i>    
+                </button>
+            </div>
        </form>
 
     </div>
