@@ -30,6 +30,7 @@ include_once 'vues/ressources/header.php';
                 }
             ?>
 
+
             <!-- Next and previous buttons -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -50,6 +51,25 @@ include_once 'vues/ressources/header.php';
 
             ?>
         </div>
+        <hr/>
+
+        <?php
+            if(!empty($donneesImages)) {
+                foreach ($donneesImages as $donnee) {
+                    echo'<div id="div'.$donnee->getIdImage().'" class="form-group">';
+                    echo'<label class ="offset-md-3 col-md-3 text-center taille">Largeur Source</label>';
+                    echo'<label id="sourceHeight" class ="col-md-3 text-center  taille">Hauteur Source</label><br>';
+                    echo'<input type="text" id="width" class="offset-md-3 col-md-3 taille text-center form-control" placeholder="" value="">';
+                    echo'<input type="text" id="height" class="col-md-3 taille text-center form-control" placeholder="" value="">';
+                    echo'<label class ="offset-md-3 col-md-3 text-center taille">Largeur Destination</label>';
+                    echo'<label id="sourceHeight" class ="col-md-3 text-center  taille">Hauteur Destination</label><br>';
+                    echo'<input type="text" id="width" class="offset-md-3 col-md-3 taille text-center form-control" placeholder="" value="">';
+                    echo'<input type="text" id="height" class="col-md-3 taille text-center form-control" placeholder="" value="">';
+                    echo'</div>';
+                 }
+            }
+        ?>
+
 
         <script type="text/javascript">
             // import 'cropperjs/dist/cropper.css';
@@ -64,6 +84,8 @@ include_once 'vues/ressources/header.php';
                     minContainerHeight : 500,
                     zoomable : false,
                     crop(event) {
+                        $('#width').attr('value',parseInt(event.detail.width));
+                        $('#height').attr('value',parseInt(event.detail.height));
                         console.log(event.detail.width);
                         console.log(event.detail.height);
                     },
