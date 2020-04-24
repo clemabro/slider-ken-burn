@@ -16,21 +16,18 @@
   <?php
     if(!empty($imgs))
     {
+        $counter = 1;
         foreach($imgs as $img)
         {
             echo '<div class="mySlides">';
-            echo '<div class="numbertext">'.(key($imgs)+1).' / '.(count($imgs)+1).'</div>';
-            echo '<img src="'.$img->getChemin().'" style="width:100%">';
+            echo '<div class="numbertext">'.$counter.' / '.(count($imgs)).'</div>';
+            echo '<img src="'.$img->getChemin().'" style="width: 100%;
+            height: auto; max-height:800;">';
             echo '<div class="text">'.$img->getTitre().'</div>';
             echo '</div>';
+            $counter++;
         }
     }
   ?>
-  <div class="mySlides">
-    <div class="numbertext">2 / 2</div>
-    <img src="vues/img/Cocacio/5ea28fcee095e.jpg" style="width:100%">
-    <div class="text">Caption 2</div>
-  </div>
-</div>
 <br>
 <script src="vues/js/slide/view.js"></script>
