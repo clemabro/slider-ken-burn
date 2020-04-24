@@ -82,9 +82,8 @@ class ImageManager
         $statement->bindValue(":largeur_destination", $image->getLargeur_destination());
         $statement->bindValue(":hauteur_destination", $image->getHauteur_destination());
         $statement->bindValue(":chemin", $image->getChemin(), PDO::PARAM_STR);
-        var_dump($statement);
         $statement->execute() or die(print_r($statement->errorInfo()));
-        var_dump($statement);
+        
         $statement = $this->_db->prepare("SELECT * FROM image where idImage = :idImage");
 
         $statement->bindValue(':idImage', $this->_db->lastInsertId());

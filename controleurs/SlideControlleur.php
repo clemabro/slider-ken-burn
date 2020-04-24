@@ -9,60 +9,74 @@ function creationDiapo()
     require 'vues/Slider/create.php';
 }
 
-function uploadImage() {
+function uploadImage()
+{
     $idSlider = $_POST['idSlider'];
 
-    if($idSlider == 0){
+    if ($idSlider == 0) {
         $slider = new Slider(array(
-                'nom' => "",
-                'dateCreation' => date("Y/m/d"),
-                'dateMaj' => date("Y/m/d")
+            'nom' => "",
+            'dateCreation' => date("Y/m/d"),
+            'dateMaj' => date("Y/m/d")
         ));
         $newSlider = getSliderManager()->createSlider($slider);
         $idSlider = $newSlider->getIdSlider();
     }
 
 
-    $target_dir = 'vues/img/'.$_SESSION['login'].'/';
-    $target_file = $target_dir.uniqid();
-    $imageFileType = pathinfo($_FILES["image"]["name"],PATHINFO_EXTENSION);
+    $target_dir = 'vues/img/' . $_SESSION['login'] . '/';
+    $target_file = $target_dir . uniqid();
+    $imageFileType = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
 
-    if (!file_exists($target_dir)){
+    if (!file_exists($target_dir)) {
         mkdir($target_dir, 777);
     }
-    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file.'.'.$imageFileType);
+
+    $etat = move_uploaded_file($_FILES["image"]["tmp_name"], $target_file . '.' . $imageFileType);
+
+    if ($etat == true) {
+
+        if (file_exists($target_file)) {
+            header('HTTP/1.1 500 Internal Server Error');
+            $uploadOk = 0;
+        }
+
+        $image = new Image(array(
+            'chemin' => $target_file .'.'. $imageFileType,
+            'hauteur_destination' => 0.0
+        ));
+
+        $newImage = getImageManager()->createImage($image);
 
 
-    if (file_exists($target_file)) {
-        header('HTTP/1.1 500 Internal Server Error');
-        $uploadOk = 0;
+        $relUsImSlMa = new RelUserImageSlider(array(
+            'login' => $_SESSION['login'],
+            'idSlider' => $idSlider,
+            'idImage' => $newImage->getIdImage()
+        ));
+
+        getRelUserImageSliderManager()->createRelUserImageSlider($relUsImSlMa);
     }
-
-    $image = new Image(array(
-        'chemin' => $target_file.$imageFileType,
-        'hauteur_destination'=>0.0
-    ));
-
-    $newImage = getImageManager()->createImage($image);
-
-    $relUsImSlMa = new RelUserImageSlider(array(
-        'login' => $_SESSION['login'],
-        'idSlider' => $idSlider,
-        'idImage' => $newImage->getIdImage()
-    ));
-    getRelUserImageSliderManager()->createRelUserImageSlider($relUsImSlMa);
-
     header('Content-Type: application/json;charset=utf-8');
     echo json_encode(array(
-        'idSlider' => $idSlider
+        'idSlider' => $idSlider,
+        'nomImage' => $_FILES["image"]["name"],
+        'etat' => $etat
     ));
 
 }
 
 function viewSlider()
 {
-    var_dump($_POST);
-    $title = "Ma Collection";
-    require 'vues/Slider/view.php';
+    if(!isset($_POST['idSlider']))
+    {
+        header('Location: albums');
+    } 
+    else 
+    {
+        $title = "Ma Collection";
+        $slider = getSliderManager()->getSliderById($_POST['idSlider']);
+        require 'vues/Slider/view.php';
+    }
 }

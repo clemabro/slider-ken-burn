@@ -65,7 +65,7 @@ class RelUserImageSliderManager
                                             :idImage,
                                             :idSlider)");
 
-        $statement->bindValue(':login',$relUserImageSlider->getLogin(), PDO::PARAM_INT);
+        $statement->bindValue(':login',$relUserImageSlider->getLogin(), PDO::PARAM_STR);
         $statement->bindValue(':idImage',$relUserImageSlider->getIdImage(), PDO::PARAM_INT);
         $statement->bindValue(':idSlider',$relUserImageSlider->getIdSlider(), PDO::PARAM_INT);
 
