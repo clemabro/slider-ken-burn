@@ -53,7 +53,7 @@ function pageEdition(e){
         success: function (data) {
             console.log(data);
             console.log('ok');
-            document.location.href = "editionDiapo";
+            $('#editSliderForm').submit();
         },
         error: function (e) {
             console.log(e);

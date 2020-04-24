@@ -1,22 +1,28 @@
 <html>
+<?php
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['login']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: connexion');
+    exit();
+}
+include_once 'vues/ressources/header.php';
+?>
     <head>
-        <link  href="vues/lib/cropper/cropper.css" rel="stylesheet">
-        <script src="vues/lib/cropper/cropper.js"></script>
+        <link  href="vues/css/slide/edit.css" rel="stylesheet">
     </head>
     <body>
 
         <div class="slideshow-container">
 
             <?php
-                var_dump($donneesImages);
                 if(!empty($donneesImages)) {
                     $index = 1;
-                    var_dump($donneesImages);
                     foreach($donneesImages as $donnee){
-
-                        echo'<div class="mySlides fade">';
+                        echo'<div class="mySlides">';
                         echo'<div class="numbertext">'.$index.'/'.count($donneesImages).'</div>';
-                        echo'<img id="image" src="'.$donnee->getChemin().'" style="width:100%">';
+                        echo'<img class="imgcropper" src="'.$donnee->getChemin().'" >';
                         echo'<div class="text">'.$donnee->getTitre().'</div>';
                         echo'</div>';
                         $index++;
@@ -29,6 +35,7 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
+
         <!-- The dots/circles -->
         <div style="text-align:center">
             <?php
@@ -36,23 +43,31 @@
             if(!empty($donneesImages)) {
                 $index = 1;
                 foreach ($donneesImages as $donnee) {
-                    echo '<span class="dot" onclick="currentSlide(' . $index . ')"></span>';
+                    echo '<span class="dot" onclick="currentSlide('.$index.')"></span>';
                     $index++;
                 }
             }
 
             ?>
         </div>
-    </body>
-    <script type="text/javascript">
-        // import 'cropperjs/dist/cropper.css';
 
-        const image = document.getElementById('image');
-        const cropper = new Cropper(image, {
-            aspectRatio: 16 / 9,
-            crop(event) {
-                console.log(event.detail.width);
-                console.log(event.detail.height);
-            },
-        });</script>
+        <script type="text/javascript">
+            // import 'cropperjs/dist/cropper.css';
+
+            const images = $('.imgcropper');
+
+
+            images.each(function(){
+                const cropper = new Cropper(this, {
+                    aspectRatio: 16 / 9,
+                    crop(event) {
+                        console.log(event.detail.width);
+                        console.log(event.detail.height);
+                    },
+                });
+            });
+        </script>
+        <script src="vues/js/slide/edit.js"></script>
+    </body>
+
 </html>

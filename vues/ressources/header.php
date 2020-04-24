@@ -8,6 +8,8 @@
 <script src="vues/lib/popper/popper.min.js"></script>
 <script src="vues/lib/bootstrap/js/bootstrap.min.js"></script>
 <link rel="icon" href="vues/img/favicon.ico"/>
+<link  href="vues/lib/cropper/cropper.css" rel="stylesheet">
+<script src="vues/lib/cropper/cropper.js"></script>
 <title><?php echo $title;?></title>
 </head>
 
